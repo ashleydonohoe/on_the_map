@@ -10,6 +10,10 @@ import Foundation
 
 class UdacityClient: NSObject {
     
+    var userID: String? = nil
+    var firstName: String? = nil
+    var lastName: String? = nil
+    
     
     // Method for building Udacity URL
     func buildUdacityURL(withPathExtension: String?) -> NSURL {
@@ -26,14 +30,17 @@ class UdacityClient: NSObject {
         print("Creating session")
         
         
-        let url = buildUdacityURL(Methods.Session)
-        let request = NSMutableURLRequest(URL: url)
+        let urlString = Constants.BaseURL + Methods.Session
+        let url = NSURL(string: urlString)
+        let request = NSMutableURLRequest(URL: url!)
+        
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \(username), \"password\": \(password)}}".dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(request) { (data, response, error) in
+        request.HTTPBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+
+
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 print("There was an error with your request: \(error)")
@@ -52,20 +59,43 @@ class UdacityClient: NSObject {
                 return
             }
             
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            
             /* 5. Parse the data */
             let parsedResult: AnyObject!
             do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+                print(parsedResult)
             } catch {
                 print("Could not parse the data as JSON: '\(data)'")
                 return
             }
+            
+            guard let accountInfo = parsedResult[JSONResponseKeys.Account] as? [String:AnyObject] else {
+                print("Could not find key account")
+                return
+            }
+            
+            guard let registeredStatus = accountInfo[JSONResponseKeys.Registered] as? Bool where registeredStatus == true else {
+                print("Sorry, you are not registered")
+                return
+            }
+            
+            guard let userKey = accountInfo[JSONResponseKeys.UserKey] as? String else {
+                print("NO user ID found")
+                return
+            }
+            
+            self.userID = userKey
+
+            self.getUserInfo(self.userID!)
         }
         task.resume()
     }
     
     //TODO: Add function for getting user info
-    func getUserInfo(userID: Int) {
+    func getUserInfo(userID: String) {
+        print("Here is the user id: \(userID)")
         
     }
     

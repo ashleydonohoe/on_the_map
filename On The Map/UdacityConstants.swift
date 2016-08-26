@@ -13,8 +13,9 @@ extension UdacityClient {
     struct Constants {
         // For URL
         static let ApiScheme: String = "https"
-        static let ApiHost = "udacity.com"
+        static let ApiHost = "www.udacity.com"
         static let ApiPath = "/api"
+        static let BaseURL = "https://www.udacity.com/api"
     }
     
     // API methods
@@ -38,6 +39,7 @@ extension UdacityClient {
         static let UserKey = "key"
         static let FirstName = "first_name"
         static let LastName = "last_name"
+        static let Registered = "registered"
     }
 
     
