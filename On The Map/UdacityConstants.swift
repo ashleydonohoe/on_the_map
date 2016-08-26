@@ -20,7 +20,7 @@ extension UdacityClient {
     
     // API methods
     struct Methods {
-        static let UserInfo = "/users/{id}"
+        static let UserInfo = "/users/"
         static let Session = "/session"
     }
     

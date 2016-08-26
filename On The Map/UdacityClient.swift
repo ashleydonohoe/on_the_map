@@ -97,6 +97,63 @@ class UdacityClient: NSObject {
     func getUserInfo(userID: String) {
         print("Here is the user id: \(userID)")
         
+        let urlString = Constants.BaseURL + Methods.UserInfo + userID
+        let url = NSURL(string: urlString)
+        print(url)
+        let request = NSURLRequest(URL: url!)
+        
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                print("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                print("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                print("No data was returned by the request!")
+                return
+            }
+            
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            
+            /* 5. Parse the data */
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+            } catch {
+                print("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            guard let userInfo = parsedResult[JSONResponseKeys.User] as? [String:AnyObject] else {
+                print("Could not find user info")
+                return
+            }
+            
+            guard let userLastName = userInfo[JSONResponseKeys.LastName] as? String else {
+                print("Sorry, no last name is shown")
+                return
+            }
+        
+            guard let userFirstName = userInfo[JSONResponseKeys.FirstName] as? String else {
+                print("Sorry, no last name is shown")
+                return
+            }
+            
+            self.firstName = userFirstName
+            self.lastName = userLastName
+        }
+        
+        task.resume()
+        
     }
     
     //TODO: Add function for deleting session
