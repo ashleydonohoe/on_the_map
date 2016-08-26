@@ -12,7 +12,6 @@ extension UdacityClient {
     
     // Constants
     struct Constants {
-        
         // For URL
         static let ApiScheme: String = "https"
         static let ApiHost = "www.udacity.com"
