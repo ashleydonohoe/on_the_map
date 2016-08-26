@@ -2,7 +2,7 @@
 //  UdacityClient.swift
 //  On The Map
 //
-//  Created by Gabriele on 8/25/16.
+//  Created by Ashley Donohoe on 8/25/16.
 //  Copyright © 2016 Ashley Donohoe. All rights reserved.
 //
 
@@ -23,6 +23,7 @@ class UdacityClient: NSObject {
     
     //TODO: Add function for posting session
     func createSession(username: String, password: String) {
+        print("Creating session")
         
     }
     

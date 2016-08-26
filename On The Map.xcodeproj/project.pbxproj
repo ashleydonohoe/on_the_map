@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E0396BA41D6FDBB400B751BA /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0396BA31D6FDBB400B751BA /* UdacityClient.swift */; };
+		E0396BA61D70CFBE00B751BA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0396BA51D70CFBE00B751BA /* LoginViewController.swift */; };
+		E0396BA81D70D00700B751BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0396BA71D70D00700B751BA /* ViewController.swift */; };
 		E09D4BB91D6FD9DA007B7E2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09D4BB81D6FD9DA007B7E2A /* AppDelegate.swift */; };
-		E09D4BBB1D6FD9DA007B7E2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09D4BBA1D6FD9DA007B7E2A /* ViewController.swift */; };
 		E09D4BBE1D6FD9DA007B7E2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E09D4BBC1D6FD9DA007B7E2A /* Main.storyboard */; };
 		E09D4BC01D6FD9DA007B7E2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E09D4BBF1D6FD9DA007B7E2A /* Assets.xcassets */; };
 		E09D4BC31D6FD9DA007B7E2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E09D4BC11D6FD9DA007B7E2A /* LaunchScreen.storyboard */; };
@@ -18,9 +19,10 @@
 
 /* Begin PBXFileReference section */
 		E0396BA31D6FDBB400B751BA /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		E0396BA51D70CFBE00B751BA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		E0396BA71D70D00700B751BA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E09D4BB51D6FD9DA007B7E2A /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E09D4BB81D6FD9DA007B7E2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E09D4BBA1D6FD9DA007B7E2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E09D4BBD1D6FD9DA007B7E2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E09D4BBF1D6FD9DA007B7E2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E09D4BC21D6FD9DA007B7E2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,8 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				E09D4BB81D6FD9DA007B7E2A /* AppDelegate.swift */,
-				E09D4BBA1D6FD9DA007B7E2A /* ViewController.swift */,
+				E0396BA51D70CFBE00B751BA /* LoginViewController.swift */,
 				E09D4BBC1D6FD9DA007B7E2A /* Main.storyboard */,
+				E0396BA71D70D00700B751BA /* ViewController.swift */,
 				E09D4BBF1D6FD9DA007B7E2A /* Assets.xcassets */,
 				E09D4BC11D6FD9DA007B7E2A /* LaunchScreen.storyboard */,
 				E09D4BC41D6FD9DA007B7E2A /* Info.plist */,
@@ -141,8 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0396BA81D70D00700B751BA /* ViewController.swift in Sources */,
+				E0396BA61D70CFBE00B751BA /* LoginViewController.swift in Sources */,
 				E0396BA41D6FDBB400B751BA /* UdacityClient.swift in Sources */,
-				E09D4BBB1D6FD9DA007B7E2A /* ViewController.swift in Sources */,
 				E09D4BB91D6FD9DA007B7E2A /* AppDelegate.swift in Sources */,
 				E09D4BCB1D6FDB60007B7E2A /* UdacityConstants.swift in Sources */,
 			);
