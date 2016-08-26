@@ -10,12 +10,11 @@ import Foundation
 
 extension UdacityClient {
     
-    // Constants
     struct Constants {
         // For URL
         static let ApiScheme: String = "https"
-        static let ApiHost = "www.udacity.com"
-        static let ApiPath = "api"
+        static let ApiHost = "udacity.com"
+        static let ApiPath = "/api"
     }
     
     // API methods
@@ -40,5 +39,6 @@ extension UdacityClient {
         static let FirstName = "first_name"
         static let LastName = "last_name"
     }
+
     
 }
