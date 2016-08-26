@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
             statusLabel.text = "Username and/or password is empty!"
         } else {
             setUIEnabled(false)
-            udacityClient.createSession(usernameTextField.text!, password: passwordTextField.text!)
+            udacityClient.createSession(usernameTextField.text!, password: passwordTextField.text!) {
         }
     }
     
