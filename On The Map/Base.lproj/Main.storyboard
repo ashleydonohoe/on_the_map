@@ -93,6 +93,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="WSX-FO-dzk" id="uQR-zF-J51"/>
                         <outlet property="passwordTextField" destination="wwc-CV-8dt" id="t6A-uB-ULp"/>
                         <outlet property="statusLabel" destination="Qlr-4z-BZ9" id="YCP-z3-Hbj"/>
                         <outlet property="usernameTextField" destination="igC-JR-qgp" id="rDg-t9-zDa"/>

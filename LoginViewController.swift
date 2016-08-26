@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +34,12 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginToUdacity(sender: AnyObject) {
         
-        if usernameTextField.text == "" || passwordTextField == "" {
+        if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             statusLabel.text = "Username and/or password is empty!"
         } else {
+            setUIEnabled(false)
             udacityClient.createSession(usernameTextField.text!, password: passwordTextField.text!)
         }
-        
     }
 }
 
@@ -60,5 +61,21 @@ extension LoginViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
         }
     }
-    
+}
+
+// UI Config adapted from MyFavoriteMovies
+extension LoginViewController {
+    private func setUIEnabled(enabled: Bool) {
+        usernameTextField.enabled = enabled
+        passwordTextField.enabled = enabled
+        loginButton.enabled = enabled
+        statusLabel.text = ""
+        statusLabel.enabled = enabled
+        
+        if enabled {
+            loginButton.alpha = 1.0
+        } else {
+            loginButton.alpha = 0.5
+        }
+    }
 }
