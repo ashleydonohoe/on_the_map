@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E017F1671D70FEED0053F032 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017F1661D70FEED0053F032 /* GCDBlackBox.swift */; };
 		E0396BA41D6FDBB400B751BA /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0396BA31D6FDBB400B751BA /* UdacityClient.swift */; };
 		E0396BA61D70CFBE00B751BA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0396BA51D70CFBE00B751BA /* LoginViewController.swift */; };
 		E0396BA81D70D00700B751BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0396BA71D70D00700B751BA /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E017F1661D70FEED0053F032 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		E0396BA31D6FDBB400B751BA /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		E0396BA51D70CFBE00B751BA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		E0396BA71D70D00700B751BA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				E09D4BC41D6FD9DA007B7E2A /* Info.plist */,
 				E09D4BCA1D6FDB60007B7E2A /* UdacityConstants.swift */,
 				E0396BA31D6FDBB400B751BA /* UdacityClient.swift */,
+				E017F1661D70FEED0053F032 /* GCDBlackBox.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				E0396BA61D70CFBE00B751BA /* LoginViewController.swift in Sources */,
 				E0396BA41D6FDBB400B751BA /* UdacityClient.swift in Sources */,
 				E09D4BB91D6FD9DA007B7E2A /* AppDelegate.swift in Sources */,
+				E017F1671D70FEED0053F032 /* GCDBlackBox.swift in Sources */,
 				E09D4BCB1D6FDB60007B7E2A /* UdacityConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

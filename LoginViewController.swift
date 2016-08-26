@@ -41,6 +41,16 @@ class LoginViewController: UIViewController {
             udacityClient.createSession(usernameTextField.text!, password: passwordTextField.text!)
         }
     }
+    
+    func completeUdacityLogin() {
+        performUIUpdatesOnMain {
+            self.statusLabel.text = ""
+            self.setUIEnabled(true)
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("LoginFinished") as! UITabBarController
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
