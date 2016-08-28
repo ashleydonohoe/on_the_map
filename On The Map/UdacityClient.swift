@@ -134,6 +134,8 @@ class UdacityClient: NSObject {
                 return
             }
             
+            print(parsedResult)
+            
             guard let userInfo = parsedResult[JSONResponseKeys.User] as? [String:AnyObject] else {
                 print("Could not find user info")
                 return
@@ -162,4 +164,56 @@ class UdacityClient: NSObject {
         
     }
     
-}
+    // API client method for
+    func udacityTaskForGetMethod(method: String, completionHandlerForGet: (result: AnyObject, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        // Make URL for request
+        let urlString = Constants.BaseURL + Methods.UserInfo + self.userID!
+        let url = NSURL(string: urlString)
+        let request = NSURLRequest(URL: url!)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                print("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                print("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                print("No data was returned by the request!")
+                return
+            }
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGet)
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
+    // Function to convert data. Adapted from Movie Manager app in iOS Networking course
+    func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result:AnyObject, error: NSError?) -> Void) {
+        let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+        
+        
+        var parsedResult: AnyObject!
+        do {
+            parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+        } catch {
+            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
+            completionHandlerForConvertData(result: parsedResult, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+        }
+        
+            completionHandlerForConvertData(result: parsedResult, error: nil)
+        }
+    }
+
+
