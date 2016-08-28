@@ -22,14 +22,14 @@ struct StudentInformation {
     
     // Initializing a Student from a dictionary
     init(dictionary: [String:AnyObject]) {
-        objectId = dictionary[ParseClient.JSONResponseKeys.objectId] as! String
-        uniqueKey = dictionary[ParseClient.JSONResponseKeys.uniqueKey] as! String
-        firstName = dictionary[ParseClient.JSONResponseKeys.firstName] as! String
-        lastName = dictionary[ParseClient.JSONResponseKeys.lastName] as! String
-        mapString = dictionary[ParseClient.JSONResponseKeys.mapString] as! String
-        mediaURL = dictionary[ParseClient.JSONResponseKeys.mediaURL] as! String
-        latitude = dictionary[ParseClient.JSONResponseKeys.latitude] as! Double
-        longitude = dictionary[ParseClient.JSONResponseKeys.longitude] as! Double
+        objectId = dictionary[ParseClient.JSONResponseKeys.ObjectId] as! String
+        uniqueKey = dictionary[ParseClient.JSONResponseKeys.UniqueKey] as! String
+        firstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as! String
+        lastName = dictionary[ParseClient.JSONResponseKeys.LastName] as! String
+        mapString = dictionary[ParseClient.JSONResponseKeys.MapString] as! String
+        mediaURL = dictionary[ParseClient.JSONResponseKeys.MediaURL] as! String
+        latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as! Double
+        longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as! Double
     }
     
     static func studentsFromResults(results: [[String:AnyObject]]) -> [StudentInformation] {

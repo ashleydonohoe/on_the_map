@@ -16,16 +16,6 @@ class UdacityClient: NSObject {
     var lastName: String? = nil
     
     
-    // Method for building Udacity URL
-    func buildUdacityURL(withPathExtension: String?) -> NSURL {
-        let components = NSURLComponents()
-        components.scheme = Constants.ApiScheme
-        components.host = Constants.ApiHost
-        components.path = Constants.ApiPath
-        
-        return components.URL!
-    }
-    
     // API client method for
     func udacityTaskForGetUserInfoMethod(completionHandlerForGet: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
@@ -89,7 +79,7 @@ class UdacityClient: NSObject {
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+                sendError(ErrorMessages.ConnectionError)
                 return
             }
             

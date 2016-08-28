@@ -12,9 +12,6 @@ extension UdacityClient {
     
     struct Constants {
         // For URL
-        static let ApiScheme: String = "https"
-        static let ApiHost = "www.udacity.com"
-        static let ApiPath = "/api"
         static let BaseURL = "https://www.udacity.com/api"
     }
     
@@ -22,13 +19,6 @@ extension UdacityClient {
     struct Methods {
         static let UserInfo = "/users/"
         static let Session = "/session"
-    }
-    
-    // JSON Body Keys
-    struct JSONBodyKeys {
-        static let Username = "username"
-        static let Password = "password"
-        static let UdacityDictionary = "udacity"
     }
     
     // JSON Response Keys
@@ -40,6 +30,12 @@ extension UdacityClient {
         static let FirstName = "first_name"
         static let LastName = "last_name"
         static let Registered = "registered"
+    }
+    
+    struct ErrorMessages {
+        static let ConnectionError = "Could not connect to Udacity"
+        static let LoginError = "Username or password is incorrect"
+        static let LogoutError = "Could not logout"
     }
 
     
