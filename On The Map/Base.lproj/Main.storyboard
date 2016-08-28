@@ -40,12 +40,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlr-4z-BZ9">
-                                <rect key="frame" x="20" y="353" width="560" height="65"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Udacity Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-yg-dC7">
                                 <rect key="frame" x="247" y="28" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -67,6 +61,12 @@
                                     <action selector="loginToUdacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rTe-rW-0iS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlr-4z-BZ9">
+                                <rect key="frame" x="20" y="353" width="560" height="65"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -127,15 +127,56 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ra1-jt-srP">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentInfoCell" textLabel="xVV-UG-gdx" detailTextLabel="Nfj-VF-5Bc" style="IBUITableViewCellStyleSubtitle" id="Bbx-ef-Vae">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bbx-ef-Vae" id="gbQ-XJ-ygk">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xVV-UG-gdx">
+                                                    <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nfj-VF-5Bc">
+                                                    <rect key="frame" x="15" y="25.5" width="30.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aj8-DW-z2c" id="wla-ST-n6Z"/>
+                                    <outlet property="delegate" destination="aj8-DW-z2c" id="xc9-3F-CtE"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ra1-jt-srP" firstAttribute="top" secondItem="rxD-d1-71K" secondAttribute="bottom" id="7Cn-Ro-2LO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rxD-d1-71K" secondAttribute="trailing" constant="-20" id="Not-Nr-PRf"/>
                             <constraint firstItem="rxD-d1-71K" firstAttribute="leading" secondItem="vud-NF-gxA" secondAttribute="leadingMargin" constant="-20" id="R5J-EF-Brm"/>
+                            <constraint firstItem="K06-pM-C9R" firstAttribute="top" secondItem="ra1-jt-srP" secondAttribute="bottom" id="T8t-Ae-GCf"/>
                             <constraint firstItem="rxD-d1-71K" firstAttribute="top" secondItem="hc6-NZ-iXL" secondAttribute="bottom" id="eZt-oS-9bu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ra1-jt-srP" secondAttribute="trailing" constant="-20" id="vsd-k5-10F"/>
+                            <constraint firstItem="ra1-jt-srP" firstAttribute="leading" secondItem="vud-NF-gxA" secondAttribute="leadingMargin" constant="-20" id="wEK-Ol-kGP"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" id="5ME-Zg-05L"/>
+                    <connections>
+                        <outlet property="studentInfoTable" destination="ra1-jt-srP" id="dM0-gK-dL8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JdG-Nd-eXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
