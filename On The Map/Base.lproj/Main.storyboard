@@ -208,15 +208,25 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hc5-K9-kii">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Hc5-K9-kii" firstAttribute="top" secondItem="KwP-Vh-54Q" secondAttribute="bottom" id="Chg-zr-UZa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KwP-Vh-54Q" secondAttribute="trailing" constant="-20" id="Qlx-oV-oGW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hc5-K9-kii" secondAttribute="trailing" constant="-20" id="Zaq-Xc-OLq"/>
                             <constraint firstItem="KwP-Vh-54Q" firstAttribute="top" secondItem="ZH3-fm-TCa" secondAttribute="bottom" id="e4H-Xd-bhg"/>
+                            <constraint firstItem="YkD-QD-FT4" firstAttribute="top" secondItem="Hc5-K9-kii" secondAttribute="bottom" id="gLJ-mh-NF7"/>
+                            <constraint firstItem="Hc5-K9-kii" firstAttribute="leading" secondItem="EpL-CY-OL9" secondAttribute="leadingMargin" constant="-20" id="tsf-uJ-NkR"/>
                             <constraint firstItem="KwP-Vh-54Q" firstAttribute="leading" secondItem="EpL-CY-OL9" secondAttribute="leadingMargin" constant="-20" id="vKB-j4-uir"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="fel-ah-UeO"/>
+                    <connections>
+                        <outlet property="mapView" destination="Hc5-K9-kii" id="3cH-BU-Qxu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhe-J9-YQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
