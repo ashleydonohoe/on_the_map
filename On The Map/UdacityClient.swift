@@ -26,11 +26,6 @@ class UdacityClient: NSObject {
         return components.URL!
     }
     
-    //TODO: Add function for deleting session
-    func closeSession() {
-        
-    }
-    
     // API client method for
     func udacityTaskForGetUserInfoMethod(completionHandlerForGet: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
@@ -115,11 +110,59 @@ class UdacityClient: NSObject {
         return task
         
     }
-//
-//    func udacityTaskForDeleteSession(completionHandlerForDeleteSession: (result: AnyObject, error: NSError?) -> Void) -> NSURLSessionDataTask {
-//        
-//    }
-//    
+    
+    // Function to delete session
+    func udacityTaskForDeleteSession(completionHandlerForDeleteSession: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        let urlString = Constants.BaseURL + Methods.Session
+        let url = NSURL(string: urlString)
+        
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "DELETE"
+    
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+            
+            func sendError(error:String) {
+                let userInfo = [NSLocalizedDescriptionKey: error]
+                completionHandlerForDeleteSession(result: nil, error: NSError(domain: "udacityTaskForDeleteSession", code: 1, userInfo: userInfo))
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDeleteSession)
+        }
+        
+        // 6. Start the request
+        task.resume()
+        
+        return task
+    }
+    
     // Function to convert data. Adapted from Movie Manager app in iOS Networking course
     func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */

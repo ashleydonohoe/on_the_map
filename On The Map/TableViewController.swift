@@ -10,6 +10,8 @@ import UIKit
 import WebKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let udacityClient = UdacityClient()
 
     @IBOutlet weak var studentInfoTable: UITableView!
     var students = [[String: AnyObject]]()
@@ -32,9 +34,18 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func logout(sender: AnyObject) {
         print("logging out")
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
-        self.presentViewController(controller, animated: true, completion: nil)
+        udacityClient.udacityTaskForDeleteSession { (result, error) in
+            if error == nil {
+                performUIUpdatesOnMain({
+                    let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                })
+            } else {
+                print("Could not end session: \(error)")
+            }
+        }
     }
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return students.count

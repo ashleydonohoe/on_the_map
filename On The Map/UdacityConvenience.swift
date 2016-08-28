@@ -61,9 +61,6 @@ extension UdacityClient {
     
     private func getUserInfo(userKey: String?, completionHandlerForUserInfo: (success: Bool, firstName: String?, lastName: String?, errorString: String?) -> Void) {
         print("Getting user info")
-        let urlString = Constants.BaseURL + Methods.UserInfo + userID!
-        let url = NSURL(string: urlString)
-        print(url)
         
         udacityTaskForGetUserInfoMethod { (result, error) in
             if let error = error {
@@ -83,8 +80,17 @@ extension UdacityClient {
 
     }
     
-    private func destroySession() {
+    private func destroySession(completionHandlerForDeleteSession: (success: Bool, errorString: String?) -> Void) {
+        print("destroying session")
         
+        udacityTaskForDeleteSession { (result, error) in
+            if let error = error {
+                print(error)
+                completionHandlerForDeleteSession(success: false, errorString: "Could not delete session")
+            } else {
+                completionHandlerForDeleteSession(success: true, errorString: nil)
+            }
+        }
     }
     
     // Instruction on adding AlertView taken from http://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038

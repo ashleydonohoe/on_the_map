@@ -10,6 +10,8 @@ import UIKit
 
 class MapViewController: UIViewController {
     
+    let udacityClient = UdacityClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +26,15 @@ class MapViewController: UIViewController {
     
     @IBAction func logout(sender: AnyObject) {
         print("logging out")
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
-        self.presentViewController(controller, animated: true, completion: nil)
+        udacityClient.udacityTaskForDeleteSession { (result, error) in
+            if error == nil {
+                performUIUpdatesOnMain({ 
+                    let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                })
+            } else {
+                print("Could not end session: \(error)")
+            }
+        }
     }
 }
