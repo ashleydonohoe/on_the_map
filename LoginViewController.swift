@@ -38,7 +38,18 @@ class LoginViewController: UIViewController {
             statusLabel.text = "Username and/or password is empty!"
         } else {
             setUIEnabled(false)
-            udacityClient.createSession(usernameTextField.text!, password: passwordTextField.text!)
+//            udacityClient.createSession(usernameTextField.text!, password: passwordTextField.text!)
+            
+            udacityClient.loginWithUdacity(usernameTextField.text!, password: passwordTextField.text!, hostViewController: self, completionHandlerForLogin: { (success, errorString) in
+                if success {
+                    print("Successful Login")
+                    performUIUpdatesOnMain({
+                        self.completeUdacityLogin()
+                    })
+                } else {
+                    print("Login failed")
+                }
+            })
         }
     }
     
