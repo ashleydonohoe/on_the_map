@@ -42,8 +42,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentInfoCell")! as UITableViewCell
         let student = students[indexPath.row]
-        cell.textLabel!.text = student["name"] as! String
-        cell.detailTextLabel?.text = student["location"] as! String
+        cell.textLabel!.text = student["name"] as? String
+        cell.detailTextLabel?.text = student["location"] as? String
         return cell
     }
 
