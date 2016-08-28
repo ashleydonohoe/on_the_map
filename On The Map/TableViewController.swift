@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,8 +19,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let student1 = ["name": "Ashley", "location": "Cincinnati"]
-        let student2 = ["name": "John", "location": "New York City"]
+        let student1 = ["name": "Ashley", "location": "Cincinnati", "website": "http://www.google.com"]
+        let student2 = ["name": "John", "location": "New York City", "website": "http://www.cnn.com"]
         
         students = [student1, student2]
     }
@@ -46,5 +47,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.detailTextLabel?.text = student["location"] as? String
         return cell
     }
-
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let student = students[indexPath.row]
+        
+        let app = UIApplication.sharedApplication()
+        if let link = student["website"] as? String {
+            app.openURL(NSURL(string: link )!)
+        }
+    }
 }
