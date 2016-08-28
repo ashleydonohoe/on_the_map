@@ -101,12 +101,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="357"/>
+            <point key="canvasLocation" x="291" y="342"/>
         </scene>
-        <!--Item 2-->
+        <!--List-->
         <scene sceneID="htN-Q9-YnG">
             <objects>
-                <viewController id="aj8-DW-z2c" sceneMemberID="viewController">
+                <viewController id="aj8-DW-z2c" customClass="TableViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hc6-NZ-iXL"/>
                         <viewControllerLayoutGuide type="bottom" id="K06-pM-C9R"/>
@@ -114,18 +114,37 @@
                     <view key="view" contentMode="scaleToFill" id="vud-NF-gxA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxD-d1-71K">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Student Locations Table" id="k3c-Yt-jhW">
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="mMd-J8-d8B">
+                                            <connections>
+                                                <action selector="logout:" destination="aj8-DW-z2c" id="8eb-fS-N0b"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="rxD-d1-71K" secondAttribute="trailing" constant="-20" id="Not-Nr-PRf"/>
+                            <constraint firstItem="rxD-d1-71K" firstAttribute="leading" secondItem="vud-NF-gxA" secondAttribute="leadingMargin" constant="-20" id="R5J-EF-Brm"/>
+                            <constraint firstItem="rxD-d1-71K" firstAttribute="top" secondItem="hc6-NZ-iXL" secondAttribute="bottom" id="eZt-oS-9bu"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="5ME-Zg-05L"/>
+                    <tabBarItem key="tabBarItem" title="List" id="5ME-Zg-05L"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JdG-Nd-eXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1902" y="656"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="PQM-rE-f6d">
             <objects>
-                <viewController id="oUK-7K-4aB" sceneMemberID="viewController">
+                <viewController id="oUK-7K-4aB" customClass="MapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZH3-fm-TCa"/>
                         <viewControllerLayoutGuide type="bottom" id="YkD-QD-FT4"/>
@@ -133,9 +152,28 @@
                     <view key="view" contentMode="scaleToFill" id="EpL-CY-OL9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwP-Vh-54Q">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Student Map Locations" id="dQp-fl-hpw">
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hrd-Jz-OSj">
+                                            <connections>
+                                                <action selector="logout:" destination="oUK-7K-4aB" id="lo9-by-4QJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="KwP-Vh-54Q" secondAttribute="trailing" constant="-20" id="Qlx-oV-oGW"/>
+                            <constraint firstItem="KwP-Vh-54Q" firstAttribute="top" secondItem="ZH3-fm-TCa" secondAttribute="bottom" id="e4H-Xd-bhg"/>
+                            <constraint firstItem="KwP-Vh-54Q" firstAttribute="leading" secondItem="EpL-CY-OL9" secondAttribute="leadingMargin" constant="-20" id="vKB-j4-uir"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="fel-ah-UeO"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="fel-ah-UeO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhe-J9-YQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,7 +195,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CN-Ui-TWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="342"/>
+            <point key="canvasLocation" x="943" y="349"/>
         </scene>
     </scenes>
 </document>
