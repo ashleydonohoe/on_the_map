@@ -83,6 +83,10 @@ extension UdacityClient {
 
     }
     
+    private func destroySession() {
+        
+    }
+    
     // Instruction on adding AlertView taken from http://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
     
     private func showUdacityAlert(alertText: String) {

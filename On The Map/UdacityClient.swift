@@ -119,7 +119,7 @@ class UdacityClient: NSObject {
 //    func udacityTaskForDeleteSession(completionHandlerForDeleteSession: (result: AnyObject, error: NSError?) -> Void) -> NSURLSessionDataTask {
 //        
 //    }
-    
+//    
     // Function to convert data. Adapted from Movie Manager app in iOS Networking course
     func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
