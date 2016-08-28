@@ -24,8 +24,6 @@ extension UdacityClient {
                     if let firstName = firstName, lastName = lastName {
                         self.firstName = firstName
                         self.lastName = lastName
-                        print(firstName)
-                        print(lastName)
                     }
                     completionHandlerForLogin(success: true, errorString: nil)
                 } else {
@@ -47,6 +45,7 @@ extension UdacityClient {
             if let error = error {
                 print(error)
                 completionHandlerForSession(success: false, userKey: nil, errorString: "Login Failed (Invalid credentials")
+                self.showUdacityAlert("Invalid Credentials")
             } else {
                 if let accountStatus = result![JSONResponseKeys.Account] as? [String: AnyObject] where (accountStatus[JSONResponseKeys.Registered] as? Bool == true) {
                     
@@ -82,5 +81,13 @@ extension UdacityClient {
             }
         }
 
+    }
+    
+    // Instruction on adding AlertView taken from http://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
+    
+    private func showUdacityAlert(alertText: String) {
+        let alertView = UIAlertView(title: "Login Error", message: alertText, delegate: self, cancelButtonTitle: "OK")
+        alertView.tag = 1
+        alertView.show()
     }
 }
