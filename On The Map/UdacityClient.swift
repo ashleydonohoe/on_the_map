@@ -165,7 +165,7 @@ class UdacityClient: NSObject {
     }
     
     // API client method for
-    func udacityTaskForGetMethod(method: String, completionHandlerForGet: (result: AnyObject, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func udacityTaskForGetUserInfoMethod(completionHandlerForGet: (result: AnyObject, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         // Make URL for request
         let urlString = Constants.BaseURL + Methods.UserInfo + self.userID!
@@ -197,6 +197,14 @@ class UdacityClient: NSObject {
         task.resume()
         
         return task
+    }
+    
+    func udacityTaskForLoginMethod(completionHandlerForLogin: (result:AnyObject, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+    }
+    
+    func udacityTaskForDeleteSession(completionHandlerForDeleteSession: (result: AnyObject, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
     }
     
     // Function to convert data. Adapted from Movie Manager app in iOS Networking course
