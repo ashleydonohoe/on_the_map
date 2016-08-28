@@ -124,6 +124,7 @@
                                                 <action selector="logout:" destination="aj8-DW-z2c" id="8eb-fS-N0b"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Pin" id="YVf-20-Rar"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -203,6 +204,7 @@
                                                 <action selector="logout:" destination="oUK-7K-4aB" id="lo9-by-4QJ"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Pin" id="DJx-R8-ce3"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
