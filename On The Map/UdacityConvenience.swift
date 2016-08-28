@@ -19,7 +19,7 @@ extension UdacityClient {
             print(userKey)
             self.userID = userKey
             
-            self.getUserInfo(self.userID, completionHandlerForUserInfo: { (success, firstName, lastName) in
+            self.getUserInfo(self.userID, completionHandlerForUserInfo: { (success, firstName, lastName, errorString) in
                 if success {
                     if let firstName = firstName, lastName = lastName {
                         self.firstName = firstName
@@ -27,7 +27,7 @@ extension UdacityClient {
                         print(firstName)
                         print(lastName)
                     }
-                    
+                    completionHandlerForLogin(success: true, errorString: nil)
                 } else {
                     completionHandlerForLogin(success: success, errorString: errorString)
                 }
@@ -60,8 +60,27 @@ extension UdacityClient {
         
     }
     
-    private func getUserInfo(userKey: String?, completionHandlerForUserInfo: (success: Bool, firstName: String?, lastName: String?) -> Void) {
+    private func getUserInfo(userKey: String?, completionHandlerForUserInfo: (success: Bool, firstName: String?, lastName: String?, errorString: String?) -> Void) {
         print("Getting user info")
+        let urlString = Constants.BaseURL + Methods.UserInfo + userID!
+        let url = NSURL(string: urlString)
+        print(url)
         
+        udacityTaskForGetUserInfoMethod { (result, error) in
+            if let error = error {
+                print(error)
+                completionHandlerForUserInfo(success: false, firstName: nil, lastName: nil, errorString: "Couldn't get user info")
+            } else {
+                if let userInfo = result[JSONResponseKeys.User] as? [String: AnyObject],
+                lastName = userInfo[JSONResponseKeys.LastName] as? String,
+                    firstName = userInfo[JSONResponseKeys.FirstName] as? String {
+                    completionHandlerForUserInfo(success: true, firstName: firstName, lastName: lastName, errorString: nil)
+                    
+                } else {
+                    completionHandlerForUserInfo(success: false, firstName: nil, lastName: nil, errorString: "Could not locate first and last name")
+                }
+            }
+        }
+
     }
 }
