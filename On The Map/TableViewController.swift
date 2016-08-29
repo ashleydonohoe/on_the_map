@@ -68,10 +68,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let app = UIApplication.sharedApplication()
         if let link = student.mediaURL as? String {
-            app.openURL(NSURL(string: link )!)
+            app.openURL(NSURL(string: link)!)
         }
     }
     
+    @IBAction func refreshStudentData(sender: AnyObject) {
+        getData()
+    }
     
     // Gets latest 100 student pins
     func getData() {

@@ -126,7 +126,11 @@
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem systemItem="refresh" id="Mcc-Lo-I9b"/>
+                                            <barButtonItem systemItem="refresh" id="Mcc-Lo-I9b">
+                                                <connections>
+                                                    <action selector="refreshStudentData:" destination="aj8-DW-z2c" id="eGJ-Sd-A6W"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem title="Pin" id="YVf-20-Rar"/>
                                         </rightBarButtonItems>
                                     </navigationItem>
@@ -209,7 +213,11 @@
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem systemItem="refresh" id="6qJ-9I-ryL"/>
+                                            <barButtonItem systemItem="refresh" id="6qJ-9I-ryL">
+                                                <connections>
+                                                    <action selector="refreshStudentData:" destination="oUK-7K-4aB" id="W8b-yb-AJM"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem title="Pin" id="DJx-R8-ce3"/>
                                         </rightBarButtonItems>
                                     </navigationItem>
@@ -233,7 +241,7 @@
                             <constraint firstItem="KwP-Vh-54Q" firstAttribute="leading" secondItem="EpL-CY-OL9" secondAttribute="leadingMargin" constant="-20" id="vKB-j4-uir"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="fel-ah-UeO"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map-50" id="fel-ah-UeO"/>
                     <connections>
                         <outlet property="mapView" destination="Hc5-K9-kii" id="3cH-BU-Qxu"/>
                     </connections>
@@ -261,4 +269,7 @@
             <point key="canvasLocation" x="943" y="349"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Map-50" width="20" height="20"/>
+    </resources>
 </document>

@@ -51,8 +51,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
-            if let toOpen = view.annotation?.subtitle! {
-                app.openURL(NSURL(string: toOpen)!)
+            if let toOpen = view.annotation?.subtitle {
+                app.openURL(NSURL(string: toOpen!)!)
             }
         }
     }
@@ -70,6 +70,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 print("Could not end session: \(error)")
             }
         }
+    }
+    
+    @IBAction func refreshStudentData(sender: AnyObject) {
+        getData()
     }
     
     // Code for showing UIAlertController. Adapted from https://www.appcoda.com/uialertcontroller-swift-closures-enum/
