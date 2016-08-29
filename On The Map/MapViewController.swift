@@ -12,6 +12,9 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     let udacityClient = UdacityClient()
+    let parseClient = ParseClient()
+    
+    var studentLocations = [StudentInformation]()
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -19,7 +22,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+//        studentLocations = parseClient.studentLocations
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("View will appear")
+        parseClient.getStudentInformation { (success, errorString) in
+            if success {
+                print("Student info gathered")
+            } else {
+                print(errorString)
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
