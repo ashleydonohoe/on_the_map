@@ -18,11 +18,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
     
     override func viewWillAppear(animated: Bool) {
         print("View will appear")
@@ -69,12 +64,40 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
         }
     }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    // Method for the right callout accessory view. Used from PinSample app
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = UIColor.redColor()
+            pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
     }
+    
+    // Method for opening URL on pin tap. Taken from PinSample app
+    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if control == annotationView.rightCalloutAccessoryView {
+            let app = UIApplication.sharedApplication()
+            let link = annotationView.annotation!.subtitle
+            app.openURL(NSURL(string: link!!)!)
+        }
+    }
+
+    
     
     @IBAction func logout(sender: AnyObject) {
         print("logging out")
