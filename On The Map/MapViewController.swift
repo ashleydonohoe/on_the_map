@@ -60,6 +60,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 })
             } else {
                 print(errorString)
+                self.showAlert("Could not download student data!")
             }
             
         }
@@ -110,5 +111,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 print("Could not end session: \(error)")
             }
         }
+    }
+    
+    // Code for showing UIAlertController. Adapted from https://www.appcoda.com/uialertcontroller-swift-closures-enum/
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(defaultAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }
