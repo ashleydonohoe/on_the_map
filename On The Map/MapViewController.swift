@@ -22,48 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(animated: Bool) {
         print("View will appear")
         
-        // Get latest student data
-        parseClient.getStudentInformation { (success, errorString) in
-            if success {
-                print("Student info gathered")
-                performUIUpdatesOnMain({
-                    self.studentLocations = self.parseClient.studentLocations
-                    
-                    // Get data for the map markers. Code adapted from PinSample app
-                    var annotations = [MKPointAnnotation]()
-                    
-                    // Get coordinatates, names, and web links from each student
-                    for student in self.studentLocations {
-                        let lat = CLLocationDegrees(student.latitude )
-                        let long = CLLocationDegrees(student.longitude )
-                        
-                        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                        
-                        let firstName = student.firstName
-                        let lastName = student.lastName
-                        let mediaURL = student.mediaURL
-                        
-                        // Creating annotations with student data
-                        let annotation = MKPointAnnotation()
-                        annotation.coordinate = coordinate
-                        annotation.title = "\(firstName) \(lastName)"
-                        annotation.subtitle = mediaURL
-                        
-                        annotations.append(annotation)
-                    }
-                    
-                    performUIUpdatesOnMain {
-                        // adding annotations to map
-                        self.mapView.addAnnotations(annotations)
-                    }
-                    
-                })
-            } else {
-                print(errorString)
-                self.showAlert("Could not download student data!")
-            }
-            
-        }
+        getData()
     }
     
     
@@ -120,5 +79,53 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         alertController.addAction(defaultAction)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // Function to get student data
+    
+    func getData() {
+        // Get latest student data
+        parseClient.getStudentInformation { (success, errorString) in
+            if success {
+                print("Student info gathered")
+                performUIUpdatesOnMain({
+                    self.studentLocations = self.parseClient.studentLocations
+                    
+                    // Get data for the map markers. Code adapted from PinSample app
+                    var annotations = [MKPointAnnotation]()
+                    
+                    // Get coordinatates, names, and web links from each student
+                    for student in self.studentLocations {
+                        let lat = CLLocationDegrees(student.latitude )
+                        let long = CLLocationDegrees(student.longitude )
+                        
+                        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                        
+                        let firstName = student.firstName
+                        let lastName = student.lastName
+                        let mediaURL = student.mediaURL
+                        
+                        // Creating annotations with student data
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = coordinate
+                        annotation.title = "\(firstName) \(lastName)"
+                        annotation.subtitle = mediaURL
+                        
+                        annotations.append(annotation)
+                    }
+                    
+                    performUIUpdatesOnMain {
+                        // adding annotations to map
+                        self.mapView.addAnnotations(annotations)
+                    }
+                    
+                })
+            } else {
+                print(errorString)
+                self.showAlert("Could not download student data!")
+            }
+            
+        }
+
     }
 }

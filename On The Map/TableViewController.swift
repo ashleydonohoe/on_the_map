@@ -27,18 +27,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(animated: Bool) {
         print("View will appear")
-        parseClient.getStudentInformation { (success, errorString) in
-            if success {
-                print("Student info gathered")
-                performUIUpdatesOnMain({ 
-                    self.studentLocations = self.parseClient.studentLocations
-                    self.studentInfoTable.reloadData()
-                })
-            } else {
-                print(errorString)
-            }
-        }
-
+        getData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +69,22 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let app = UIApplication.sharedApplication()
         if let link = student.mediaURL as? String {
             app.openURL(NSURL(string: link )!)
+        }
+    }
+    
+    
+    // Gets latest 100 student pins
+    func getData() {
+        parseClient.getStudentInformation { (success, errorString) in
+            if success {
+                print("Student info gathered")
+                performUIUpdatesOnMain({
+                    self.studentLocations = self.parseClient.studentLocations
+                    self.studentInfoTable.reloadData()
+                })
+            } else {
+                print(errorString)
+            }
         }
     }
 }
