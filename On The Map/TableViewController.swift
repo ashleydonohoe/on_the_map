@@ -12,19 +12,33 @@ import WebKit
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let udacityClient = UdacityClient()
+    let parseClient = ParseClient()
 
     @IBOutlet weak var studentInfoTable: UITableView!
-    var students = [[String: AnyObject]]()
+      var studentLocations = [StudentInformation]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let student1 = ["name": "Ashley", "location": "Cincinnati", "website": "http://www.google.com"]
-        let student2 = ["name": "John", "location": "New York City", "website": "http://www.cnn.com"]
-        
-        students = [student1, student2]
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("View will appear")
+        parseClient.getStudentInformation { (success, errorString) in
+            if success {
+                print("Student info gathered")
+                performUIUpdatesOnMain({ 
+                    self.studentLocations = self.parseClient.studentLocations
+                    self.studentInfoTable.reloadData()
+                })
+            } else {
+                print(errorString)
+            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,22 +62,23 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return studentLocations.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentInfoCell")! as UITableViewCell
-        let student = students[indexPath.row]
-        cell.textLabel!.text = student["name"] as? String
-        cell.detailTextLabel?.text = student["location"] as? String
+        let student = studentLocations[indexPath.row]
+        cell.textLabel!.text = student.firstName + " " + student.lastName
+        cell.detailTextLabel?.text = student.mapString
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student = students[indexPath.row]
+        let student = studentLocations[indexPath.row]
         
         let app = UIApplication.sharedApplication()
-        if let link = student["website"] as? String {
+        if let link = student.mediaURL as? String {
             app.openURL(NSURL(string: link )!)
         }
     }
