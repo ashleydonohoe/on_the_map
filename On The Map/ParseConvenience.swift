@@ -16,17 +16,25 @@ extension ParseClient {
             ParseClient.Parameters.Order: "-updatedAt"
         ]
         
-        taskForGETMethod(nil, parameters: parameters) { (result, error) in
+        taskForGETMethod(parameters) { (result, error) in
+//            if let error = error {
+//                completionHandlerForStudentInfo(success: false, errorString: "Error occurred")
+//            } else {
+//                if let information = result[JSONResponseKeys.Results] as? [[String:AnyObject]] {
+//                    self.studentLocations = StudentInformation.studentsFromResults(information)
+//                    print(self.studentLocations)
+//                    completionHandlerForStudentInfo(success: true, errorString: nil)
+//                } else {
+//                    completionHandlerForStudentInfo(success: false, errorString: "Could not get student info")
+//                }
+//            }
+            
             if let error = error {
-                completionHandlerForStudentInfo(success: false, errorString: "Error occurred")
+                print(error)
+                completionHandlerForStudentInfo(success: false, errorString:  "\(error)")
             } else {
-                if let information = result[JSONResponseKeys.Results] as? [[String:AnyObject]] {
-                    self.studentLocations = StudentInformation.studentsFromResults(information)
-                    print(self.studentLocations)
-                    completionHandlerForStudentInfo(success: true, errorString: nil)
-                } else {
-                    completionHandlerForStudentInfo(success: false, errorString: "Could not get student info")
-                }
+                print(result)
+                completionHandlerForStudentInfo(success: true, errorString: nil)
             }
         }
     }

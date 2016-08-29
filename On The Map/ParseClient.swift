@@ -21,12 +21,13 @@ class ParseClient: NSObject {
     
     
     // API method for get requests
-    func taskForGETMethod(method: String?, var parameters: [String:AnyObject], completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForGETMethod(var parameters: [String:AnyObject], completionHandlerForGET: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         print("Starting get")
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(URL: parseURLFromParameters(parameters, withPathExtension: method))
+        let request = NSMutableURLRequest(URL: parseURLFromParameters(parameters))
+        print(request.URL)
         request.addValue(Constants.ApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Constants.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
