@@ -20,22 +20,56 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-//        studentLocations = parseClient.studentLocations
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         print("View will appear")
+        
+        // Get latest student data
         parseClient.getStudentInformation { (success, errorString) in
             if success {
                 print("Student info gathered")
+                performUIUpdatesOnMain({
+                    self.studentLocations = self.parseClient.studentLocations
+                    
+                    // Get data for the map markers. Code adapted from PinSample app
+                    var annotations = [MKPointAnnotation]()
+                    
+                    // Get coordinatates, names, and web links from each student
+                    for student in self.studentLocations {
+                        let lat = CLLocationDegrees(student.latitude as! Double)
+                        let long = CLLocationDegrees(student.longitude as! Double)
+                        
+                        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                        
+                        let firstName = student.firstName
+                        let lastName = student.lastName
+                        let mediaURL = student.mediaURL
+                        
+                        // Creating annotations with student data
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = coordinate
+                        annotation.title = "\(firstName) \(lastName)"
+                        annotation.subtitle = mediaURL
+                        
+                        annotations.append(annotation)
+                    }
+                    
+                    performUIUpdatesOnMain {
+                        // adding annotations to map
+                        self.mapView.addAnnotation(annotations)
+                    }
+                    
+                })
             } else {
                 print(errorString)
             }
+            
         }
-        
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
