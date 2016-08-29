@@ -210,6 +210,9 @@
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hc5-K9-kii">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <connections>
+                                    <outlet property="delegate" destination="oUK-7K-4aB" id="4jh-xh-Cwb"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

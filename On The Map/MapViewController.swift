@@ -88,15 +88,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // Method for opening URL on pin tap. Taken from PinSample app
-    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        if control == annotationView.rightCalloutAccessoryView {
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
-            let link = annotationView.annotation!.subtitle
-            app.openURL(NSURL(string: link!!)!)
+            if let toOpen = view.annotation?.subtitle! {
+                app.openURL(NSURL(string: toOpen)!)
+            }
         }
     }
-
     
     
     @IBAction func logout(sender: AnyObject) {
