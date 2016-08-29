@@ -39,8 +39,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     
                     // Get coordinatates, names, and web links from each student
                     for student in self.studentLocations {
-                        let lat = CLLocationDegrees(student.latitude as! Double)
-                        let long = CLLocationDegrees(student.longitude as! Double)
+                        let lat = CLLocationDegrees(student.latitude )
+                        let long = CLLocationDegrees(student.longitude )
                         
                         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                         
@@ -59,7 +59,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     
                     performUIUpdatesOnMain {
                         // adding annotations to map
-                        self.mapView.addAnnotation(annotations)
+                        self.mapView.addAnnotations(annotations)
                     }
                     
                 })
