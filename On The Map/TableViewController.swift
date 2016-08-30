@@ -72,6 +72,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    // Function to post new student location
+    @IBAction func postStudentLocation(sender: AnyObject) {
+        
+    }
+    
     @IBAction func refreshStudentData(sender: AnyObject) {
         getData()
     }
@@ -90,4 +95,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
+    
+    
 }

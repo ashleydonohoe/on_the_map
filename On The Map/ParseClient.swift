@@ -30,7 +30,6 @@ class ParseClient: NSObject {
         let urlString = "https://parse.udacity.com/parse/classes/StudentLocation?order=-updatedAt&limit=100"
         let url = NSURL(string: urlString)
         let request = NSMutableURLRequest(URL: url!)
-        print(request.URL)
         request.addValue(Constants.ApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Constants.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
@@ -85,7 +84,6 @@ class ParseClient: NSObject {
             components.queryItems!.append(queryItem)
         }
         
-        print(components.URL!)
         return components.URL!
         
     }
@@ -98,7 +96,6 @@ class ParseClient: NSObject {
         var parsedResult: AnyObject!
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-            print(parsedResult)
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))

@@ -85,8 +85,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    // Function to get student data
+    // Function to post new student location
+    @IBAction func postStudentLocation(sender: AnyObject) {
+        
+    }
     
+    // Function to get student data
     func getData() {
         // Get latest student data
         parseClient.getStudentInformation { (success, errorString) in
@@ -132,4 +136,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
 
     }
+    
+    
 }

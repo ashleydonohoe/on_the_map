@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     
     let udacityClient = UdacityClient()
 
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
@@ -24,6 +25,8 @@ class LoginViewController: UIViewController {
         
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+        activity.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,15 +42,22 @@ class LoginViewController: UIViewController {
         } else {
             setUIEnabled(false)
             
+            activity.hidden = false
+            activity.startAnimating()
+            
             udacityClient.loginWithUdacity(usernameTextField.text!, password: passwordTextField.text!, hostViewController: self, completionHandlerForLogin: { (success, errorString) in
                 if success {
                     print("Successful Login")
                     performUIUpdatesOnMain({
+                        self.activity.stopAnimating()
+                        self.activity.hidden = true
                         self.completeUdacityLogin()
                     })
                 } else {
                     print("Login failed")
                     performUIUpdatesOnMain({
+                        self.activity.stopAnimating()
+                        self.activity.hidden = true
                         self.setUIEnabled(true)
                     })
                 }

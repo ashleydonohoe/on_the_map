@@ -68,6 +68,9 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fVR-HI-hSo">
+                                <rect key="frame" x="290" y="207" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -79,6 +82,7 @@
                             <constraint firstItem="igC-JR-qgp" firstAttribute="trailing" secondItem="wwc-CV-8dt" secondAttribute="trailing" id="FpC-Xo-2yO"/>
                             <constraint firstItem="WSX-FO-dzk" firstAttribute="centerX" secondItem="Qlr-4z-BZ9" secondAttribute="centerX" id="Gdb-7U-Hkn"/>
                             <constraint firstItem="FUX-yg-dC7" firstAttribute="centerX" secondItem="WSX-FO-dzk" secondAttribute="centerX" id="ISM-Dv-2Dh"/>
+                            <constraint firstItem="fVR-HI-hSo" firstAttribute="centerX" secondItem="WSX-FO-dzk" secondAttribute="centerX" id="JNO-vQ-3as"/>
                             <constraint firstItem="NKa-vZ-SJ3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="85" id="Jls-Nj-Zoi"/>
                             <constraint firstItem="igC-JR-qgp" firstAttribute="top" secondItem="FUX-yg-dC7" secondAttribute="bottom" constant="52" id="K8h-Dx-VwL"/>
                             <constraint firstItem="wfl-VI-AHe" firstAttribute="centerY" secondItem="wwc-CV-8dt" secondAttribute="centerY" id="RjN-qc-nar"/>
@@ -89,11 +93,13 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qlr-4z-BZ9" secondAttribute="bottom" constant="182" id="jE3-tc-yfm"/>
                             <constraint firstItem="wfl-VI-AHe" firstAttribute="top" secondItem="NKa-vZ-SJ3" secondAttribute="bottom" constant="41" id="ngS-ml-qV2"/>
                             <constraint firstItem="NKa-vZ-SJ3" firstAttribute="centerY" secondItem="igC-JR-qgp" secondAttribute="centerY" id="olX-PJ-dTj"/>
+                            <constraint firstItem="fVR-HI-hSo" firstAttribute="top" secondItem="wwc-CV-8dt" secondAttribute="bottom" constant="14" id="ovz-XU-pQt"/>
                             <constraint firstItem="WSX-FO-dzk" firstAttribute="top" secondItem="wwc-CV-8dt" secondAttribute="bottom" constant="48" id="q1C-gu-5RE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="igC-JR-qgp" secondAttribute="trailing" id="uOu-JE-H6U"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activity" destination="fVR-HI-hSo" id="9De-pL-vhp"/>
                         <outlet property="loginButton" destination="WSX-FO-dzk" id="uQR-zF-J51"/>
                         <outlet property="passwordTextField" destination="wwc-CV-8dt" id="t6A-uB-ULp"/>
                         <outlet property="statusLabel" destination="Qlr-4z-BZ9" id="YCP-z3-Hbj"/>
@@ -131,7 +137,11 @@
                                                     <action selector="refreshStudentData:" destination="aj8-DW-z2c" id="eGJ-Sd-A6W"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Pin" id="YVf-20-Rar"/>
+                                            <barButtonItem image="Marker Filled-50" id="YVf-20-Rar">
+                                                <connections>
+                                                    <action selector="postStudentLocation:" destination="aj8-DW-z2c" id="a5W-5h-r52"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -182,7 +192,7 @@
                             <constraint firstItem="ra1-jt-srP" firstAttribute="leading" secondItem="vud-NF-gxA" secondAttribute="leadingMargin" constant="-20" id="wEK-Ol-kGP"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" id="5ME-Zg-05L"/>
+                    <tabBarItem key="tabBarItem" title="List" image="List-50" id="5ME-Zg-05L"/>
                     <connections>
                         <outlet property="studentInfoTable" destination="ra1-jt-srP" id="dM0-gK-dL8"/>
                     </connections>
@@ -218,7 +228,11 @@
                                                     <action selector="refreshStudentData:" destination="oUK-7K-4aB" id="W8b-yb-AJM"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Pin" id="DJx-R8-ce3"/>
+                                            <barButtonItem image="Marker Filled-50" id="DJx-R8-ce3">
+                                                <connections>
+                                                    <action selector="postStudentLocation:" destination="oUK-7K-4aB" id="6AL-nX-XKh"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -250,6 +264,24 @@
             </objects>
             <point key="canvasLocation" x="1902" y="-5"/>
         </scene>
+        <!--Post Student Location-->
+        <scene sceneID="eSH-X1-vCu">
+            <objects>
+                <viewController title="Post Student Location" id="aVI-Ey-wRP" customClass="PostStudentLocationViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s0a-nh-Bcb"/>
+                        <viewControllerLayoutGuide type="bottom" id="SPo-6I-8RV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMq-VL-AVa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xq-Qa-VrW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2593" y="192"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0Td-IZ-YQc">
             <objects>
@@ -270,6 +302,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="List-50" width="20" height="20"/>
         <image name="Map-50" width="20" height="20"/>
+        <image name="Marker Filled-50" width="40" height="40"/>
     </resources>
 </document>
