@@ -24,10 +24,10 @@ struct StudentInformation {
     init(dictionary: [String:AnyObject]) {
         objectId = dictionary[ParseClient.JSONResponseKeys.ObjectId] as? String ?? "None"
         uniqueKey = dictionary[ParseClient.JSONResponseKeys.UniqueKey] as? String ?? "None"
-        firstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as? String ?? "None"
-        lastName = dictionary[ParseClient.JSONResponseKeys.LastName] as? String ?? "None"
-        mapString = dictionary[ParseClient.JSONResponseKeys.MapString] as? String ?? "None"
-        mediaURL = dictionary[ParseClient.JSONResponseKeys.MediaURL] as? String ?? "None"
+        firstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as? String ?? "Unknown"
+        lastName = dictionary[ParseClient.JSONResponseKeys.LastName] as? String ?? "Unknown"
+        mapString = dictionary[ParseClient.JSONResponseKeys.MapString] as? String ?? "Location Unknown"
+        mediaURL = dictionary[ParseClient.JSONResponseKeys.MediaURL] as? String ?? "No URL provided"
         latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as? Double ?? 0.00
         longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as? Double ?? 0.00
     }
