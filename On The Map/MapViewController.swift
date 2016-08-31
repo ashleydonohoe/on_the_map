@@ -69,6 +69,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 })
             } else {
                 print("Could not end session: \(error)")
+                self.showAlert("Could not log out!")
             }
         }
     }
