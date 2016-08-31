@@ -62,11 +62,23 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
                             let location = placemark?.location
                             let coordinate = location?.coordinate
                             print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                            
+                            
+                            // Hide current View
+                            // Show new view
+                            // Show map with pointer on coordinate
+    
+                            
+                            
+                            
+                            
+                            
+                            
                         } else {
                             print("No coordinates found")
                             performUIUpdatesOnMain({ 
                                 self.showAlert("No coordinates found. Please check your location")
-                            })
+                    })
                 }
             })
         }
