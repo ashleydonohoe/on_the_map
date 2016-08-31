@@ -57,6 +57,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E02359C91D779A5800A29415 /* UdacityClient */ = {
+			isa = PBXGroup;
+			children = (
+				E0396BA31D6FDBB400B751BA /* UdacityClient.swift */,
+				E0BE7D3D1D735F90001CB386 /* UdacityConvenience.swift */,
+				E09D4BCA1D6FDB60007B7E2A /* UdacityConstants.swift */,
+			);
+			name = UdacityClient;
+			sourceTree = "<group>";
+		};
+		E02359CA1D779A6F00A29415 /* ParseClient */ = {
+			isa = PBXGroup;
+			children = (
+				E013A0881D739AB9006CA20C /* ParseClient.swift */,
+				E013A0861D739AAB006CA20C /* ParseConstants.swift */,
+				E013A08A1D73A857006CA20C /* ParseConvenience.swift */,
+			);
+			name = ParseClient;
+			sourceTree = "<group>";
+		};
+		E02359CB1D779A9000A29415 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0BE7D3F1D736F35001CB386 /* MapViewController.swift */,
+				E0396BA51D70CFBE00B751BA /* LoginViewController.swift */,
+				E013A08C1D74FAE0006CA20C /* PostStudentLocationViewController.swift */,
+				E0BE7D411D736F46001CB386 /* TableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E02359CC1D779AA100A29415 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E09D4BBC1D6FD9DA007B7E2A /* Main.storyboard */,
+				E017F1661D70FEED0053F032 /* GCDBlackBox.swift */,
+				E09D4BBF1D6FD9DA007B7E2A /* Assets.xcassets */,
+				E09D4BC11D6FD9DA007B7E2A /* LaunchScreen.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		E02359CD1D779AC900A29415 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				E013A0841D7398FC006CA20C /* StudentInformation.swift */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
 		E09D4BAC1D6FD9DA007B7E2A = {
 			isa = PBXGroup;
 			children = (
@@ -76,23 +126,13 @@
 		E09D4BB71D6FD9DA007B7E2A /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				E02359CD1D779AC900A29415 /* Data Model */,
+				E02359CC1D779AA100A29415 /* Assets */,
+				E02359CB1D779A9000A29415 /* ViewControllers */,
+				E02359CA1D779A6F00A29415 /* ParseClient */,
+				E02359C91D779A5800A29415 /* UdacityClient */,
 				E09D4BB81D6FD9DA007B7E2A /* AppDelegate.swift */,
-				E0396BA51D70CFBE00B751BA /* LoginViewController.swift */,
-				E09D4BBC1D6FD9DA007B7E2A /* Main.storyboard */,
-				E09D4BBF1D6FD9DA007B7E2A /* Assets.xcassets */,
-				E09D4BC11D6FD9DA007B7E2A /* LaunchScreen.storyboard */,
 				E09D4BC41D6FD9DA007B7E2A /* Info.plist */,
-				E09D4BCA1D6FDB60007B7E2A /* UdacityConstants.swift */,
-				E0396BA31D6FDBB400B751BA /* UdacityClient.swift */,
-				E017F1661D70FEED0053F032 /* GCDBlackBox.swift */,
-				E0BE7D3D1D735F90001CB386 /* UdacityConvenience.swift */,
-				E0BE7D3F1D736F35001CB386 /* MapViewController.swift */,
-				E0BE7D411D736F46001CB386 /* TableViewController.swift */,
-				E013A0841D7398FC006CA20C /* StudentInformation.swift */,
-				E013A0861D739AAB006CA20C /* ParseConstants.swift */,
-				E013A0881D739AB9006CA20C /* ParseClient.swift */,
-				E013A08A1D73A857006CA20C /* ParseConvenience.swift */,
-				E013A08C1D74FAE0006CA20C /* PostStudentLocationViewController.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
