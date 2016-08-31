@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let udacityClient = UdacityClient()
 
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -45,7 +44,7 @@ class LoginViewController: UIViewController {
             activity.hidden = false
             activity.startAnimating()
             
-            udacityClient.loginWithUdacity(usernameTextField.text!, password: passwordTextField.text!, hostViewController: self, completionHandlerForLogin: { (success, errorString) in
+            UdacityClient.sharedInstance().loginWithUdacity(usernameTextField.text!, password: passwordTextField.text!, hostViewController: self, completionHandlerForLogin: { (success, errorString) in
                 if success {
                     print("Successful Login")
                     performUIUpdatesOnMain({
@@ -111,4 +110,6 @@ extension LoginViewController {
             loginButton.alpha = 0.5
         }
     }
+    
+    
 }

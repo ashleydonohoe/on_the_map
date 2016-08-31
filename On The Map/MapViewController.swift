@@ -11,8 +11,6 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    let udacityClient = UdacityClient()
-    let parseClient = ParseClient()
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
     var studentLocations = [StudentInformation]()
@@ -61,7 +59,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func logout(sender: AnyObject) {
         print("logging out")
-        udacityClient.udacityTaskForDeleteSession { (result, error) in
+        UdacityClient.sharedInstance().udacityTaskForDeleteSession { (result, error) in
             if error == nil {
                 performUIUpdatesOnMain({ 
                     let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
@@ -75,6 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func refreshStudentData(sender: AnyObject) {
+        self.studentLocations = []
         getData()
     }
     
@@ -97,11 +96,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         activity.hidden = false
         // Get latest student data
-        parseClient.getStudentInformation { (success, errorString) in
+        ParseClient.sharedInstance().getStudentInformation { (success, errorString) in
             if success {
                 print("Student info gathered")
                 performUIUpdatesOnMain({
-                    self.studentLocations = self.parseClient.studentLocations
+                    self.studentLocations = ParseClient.sharedInstance().studentLocations
                     
                     // Get data for the map markers. Code adapted from PinSample app
                     var annotations = [MKPointAnnotation]()

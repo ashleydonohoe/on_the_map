@@ -11,9 +11,6 @@ import WebKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let udacityClient = UdacityClient()
-    let parseClient = ParseClient()
-
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var studentInfoTable: UITableView!
       var studentLocations = [StudentInformation]()
@@ -38,7 +35,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func logout(sender: AnyObject) {
         print("logging out")
-        udacityClient.udacityTaskForDeleteSession { (result, error) in
+        UdacityClient.sharedInstance().udacityTaskForDeleteSession { (result, error) in
             if error == nil {
                 performUIUpdatesOnMain({
                     let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
@@ -79,18 +76,18 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func refreshStudentData(sender: AnyObject) {
+        self.studentLocations = []
         getData()
     }
     
     // Gets latest 100 student pins
     func getData() {
-        
         activity.hidden = false
-        parseClient.getStudentInformation { (success, errorString) in
+        ParseClient.sharedInstance().getStudentInformation { (success, errorString) in
             if success {
                 print("Student info gathered")
                 performUIUpdatesOnMain({
-                    self.studentLocations = self.parseClient.studentLocations
+                    self.studentLocations = ParseClient.sharedInstance().studentLocations
                     self.studentInfoTable.reloadData()
                 })
             } else {

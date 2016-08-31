@@ -19,6 +19,14 @@ class ParseClient: NSObject {
     }
     
     
+    //Allows client to act as singleton
+    class func sharedInstance() -> ParseClient {
+        struct Singleton {
+            static var sharedInstance = ParseClient()
+        }
+        return Singleton.sharedInstance
+    }
+    
     
     // API method for get requests
     func taskForGETMethod(var parameters: [String:AnyObject], completionHandlerForGET: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {

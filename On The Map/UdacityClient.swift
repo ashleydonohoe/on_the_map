@@ -16,6 +16,15 @@ class UdacityClient: NSObject {
     var lastName: String? = nil
     
     
+    //Allows client to act as singleton
+    class func sharedInstance() -> UdacityClient {
+        struct Singleton {
+            static var sharedInstance = UdacityClient()
+        }
+        return Singleton.sharedInstance
+    }
+    
+    
     // API client method for
     func udacityTaskForGetUserInfoMethod(completionHandlerForGet: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         

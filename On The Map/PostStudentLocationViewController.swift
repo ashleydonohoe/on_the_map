@@ -13,7 +13,6 @@ import MapKit
 
 class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
 
-    let udacityClient = UdacityClient()
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var enterLocationView: UIView!
@@ -35,6 +34,8 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
         locationTextField.delegate = self
         linkTextField.delegate = self
         postLinkView.hidden = true
+        
+        print(UdacityClient.sharedInstance().lastName)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,12 +82,10 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                             let coordinate = CLLocationCoordinate2D(latitude: self.coordinate!.latitude, longitude: self.coordinate!.longitude)
                             var studentAnnotation = MKPointAnnotation()
                             studentAnnotation.coordinate = coordinate
-                            studentAnnotation.title = "\(self.udacityClient.firstName) \(self.udacityClient.lastName)"
+                            studentAnnotation.title = "\(UdacityClient.sharedInstance().firstName) \(UdacityClient.sharedInstance().lastName)"
                             performUIUpdatesOnMain({ 
                                 self.mapView.addAnnotation(studentAnnotation)
                             })
-                            
-                            
                         } else {
                             print("No coordinates found")
                             performUIUpdatesOnMain({ 

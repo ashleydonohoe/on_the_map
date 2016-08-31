@@ -50,6 +50,7 @@ extension UdacityClient {
                 if let accountStatus = result![JSONResponseKeys.Account] as? [String: AnyObject] where (accountStatus[JSONResponseKeys.Registered] as? Bool == true) {
                     
                     let userKey = accountStatus[JSONResponseKeys.UserKey] as? String
+                    self.userID = userKey
                     completionHandlerForSession(success: true, userKey: userKey, errorString: nil)
                 } else {
                     completionHandlerForSession(success: false, userKey: nil, errorString: "Cannot find registered status")
@@ -71,6 +72,8 @@ extension UdacityClient {
                 if let userInfo = result[JSONResponseKeys.User] as? [String: AnyObject],
                 lastName = userInfo[JSONResponseKeys.LastName] as? String,
                     firstName = userInfo[JSONResponseKeys.FirstName] as? String {
+                    self.firstName = firstName
+                    self.lastName = lastName
                     completionHandlerForUserInfo(success: true, firstName: firstName, lastName: lastName, errorString: nil)
                     
                 } else {
