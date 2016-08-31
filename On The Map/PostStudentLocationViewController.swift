@@ -14,6 +14,8 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var enterLocationView: UIView!
+    @IBOutlet weak var postLinkView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,6 +67,7 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
                             
                             
                             // Hide current View
+                            self.enterLocationView.hidden = true
                             // Show new view
                             // Show map with pointer on coordinate
     
