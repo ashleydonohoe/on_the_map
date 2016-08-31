@@ -82,8 +82,9 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                             let coordinate = CLLocationCoordinate2D(latitude: self.coordinate!.latitude, longitude: self.coordinate!.longitude)
                             var studentAnnotation = MKPointAnnotation()
                             studentAnnotation.coordinate = coordinate
-                            studentAnnotation.title = "\(UdacityClient.sharedInstance().firstName) \(UdacityClient.sharedInstance().lastName)"
-                            performUIUpdatesOnMain({ 
+                            studentAnnotation.title = "\(UdacityClient.sharedInstance().firstName!) \(UdacityClient.sharedInstance().lastName!)"
+                            performUIUpdatesOnMain({
+                                self.mapView.centerCoordinate = coordinate
                                 self.mapView.addAnnotation(studentAnnotation)
                             })
                         } else {
