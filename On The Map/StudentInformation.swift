@@ -28,8 +28,8 @@ struct StudentInformation {
         lastName = dictionary[ParseClient.JSONResponseKeys.LastName] as? String ?? "None"
         mapString = dictionary[ParseClient.JSONResponseKeys.MapString] as? String ?? "None"
         mediaURL = dictionary[ParseClient.JSONResponseKeys.MediaURL] as? String ?? "None"
-        latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as! Double
-        longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as! Double
+        latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as? Double ?? 0.00
+        longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as? Double ?? 0.00
     }
     
     static func studentsFromResults(results: [[String:AnyObject]]) -> [StudentInformation] {

@@ -290,6 +290,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOR-Ef-hdr">
+                                <rect key="frame" x="0.0" y="14" width="600" height="572"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P5b-9J-6yK">
+                                        <rect key="frame" x="0.0" y="165" width="600" height="407"/>
+                                    </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3l-Wl-SNV">
+                                        <rect key="frame" x="226" y="479" width="148" height="30"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.70666173986486491" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="EWD-X6-Ia4"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="postStudentLocation:" destination="aVI-Ey-wRP" eventType="touchUpInside" id="rXl-lB-HZR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9W-kX-Ef1">
+                                        <rect key="frame" x="523" y="8" width="69" height="30"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.57252956079999995" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="69" id="mRA-bt-XgC"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Cancel"/>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type or paste your link here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVt-99-nm1">
+                                        <rect key="frame" x="8" y="56" width="584" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjP-mG-PBk">
+                                        <rect key="frame" x="523" y="8" width="69" height="30"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.57252956079999995" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="aVI-Ey-wRP" eventType="touchUpInside" id="jRa-yd-4d0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="E9W-kX-Ef1" firstAttribute="top" secondItem="QOR-Ef-hdr" secondAttribute="topMargin" id="2Mt-7c-Pss"/>
+                                    <constraint firstItem="fjP-mG-PBk" firstAttribute="leading" secondItem="E9W-kX-Ef1" secondAttribute="leading" id="4rK-ZZ-e6V"/>
+                                    <constraint firstAttribute="bottom" secondItem="f3l-Wl-SNV" secondAttribute="bottom" constant="63" id="CBQ-hP-w0k"/>
+                                    <constraint firstItem="hVt-99-nm1" firstAttribute="centerX" secondItem="f3l-Wl-SNV" secondAttribute="centerX" id="Fqe-Wi-Y6k"/>
+                                    <constraint firstAttribute="trailing" secondItem="P5b-9J-6yK" secondAttribute="trailing" id="H4X-qm-XcI"/>
+                                    <constraint firstItem="E9W-kX-Ef1" firstAttribute="trailing" secondItem="hVt-99-nm1" secondAttribute="trailing" id="Pdd-hC-5Wn"/>
+                                    <constraint firstItem="P5b-9J-6yK" firstAttribute="top" secondItem="hVt-99-nm1" secondAttribute="bottom" constant="79" id="ZYJ-Wr-vQ8"/>
+                                    <constraint firstItem="hVt-99-nm1" firstAttribute="leading" secondItem="QOR-Ef-hdr" secondAttribute="leadingMargin" id="gUC-8H-BMt"/>
+                                    <constraint firstItem="fjP-mG-PBk" firstAttribute="trailing" secondItem="E9W-kX-Ef1" secondAttribute="trailing" id="jmF-7W-gVk"/>
+                                    <constraint firstItem="fjP-mG-PBk" firstAttribute="baseline" secondItem="E9W-kX-Ef1" secondAttribute="baseline" id="kuX-kD-b98"/>
+                                    <constraint firstItem="P5b-9J-6yK" firstAttribute="centerX" secondItem="f3l-Wl-SNV" secondAttribute="centerX" id="lBW-5G-5da"/>
+                                    <constraint firstItem="hVt-99-nm1" firstAttribute="top" secondItem="E9W-kX-Ef1" secondAttribute="bottom" constant="18" id="ouZ-uP-unr"/>
+                                    <constraint firstAttribute="bottom" secondItem="P5b-9J-6yK" secondAttribute="bottom" id="sVK-zX-53R"/>
+                                    <constraint firstItem="P5b-9J-6yK" firstAttribute="leading" secondItem="QOR-Ef-hdr" secondAttribute="leading" id="xxN-gv-Dns"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ev-sz-SzQ">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
@@ -321,89 +381,51 @@
                                             <action selector="findOnMap:" destination="aVI-Ey-wRP" eventType="touchUpInside" id="f01-cU-x7d"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOR-Ef-hdr">
-                                        <rect key="frame" x="0.0" y="8" width="600" height="572"/>
-                                        <subviews>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P5b-9J-6yK">
-                                                <rect key="frame" x="0.0" y="165" width="600" height="407"/>
-                                            </mapView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3l-Wl-SNV">
-                                                <rect key="frame" x="226" y="479" width="148" height="30"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.57252956076216222" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="148" id="EWD-X6-Ia4"/>
-                                                </constraints>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Submit"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9W-kX-Ef1">
-                                                <rect key="frame" x="523" y="8" width="69" height="30"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.57252956079999995" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="69" id="mRA-bt-XgC"/>
-                                                </constraints>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Cancel"/>
-                                            </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type or paste your link here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVt-99-nm1">
-                                                <rect key="frame" x="8" y="56" width="584" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjP-mG-PBk">
-                                                <rect key="frame" x="523" y="8" width="69" height="30"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.57252956079999995" colorSpace="calibratedRGB"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Cancel"/>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlb-1u-GdM">
+                                        <rect key="frame" x="531" y="8" width="69" height="30"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.57252956079999995" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="E9W-kX-Ef1" firstAttribute="top" secondItem="QOR-Ef-hdr" secondAttribute="topMargin" id="2Mt-7c-Pss"/>
-                                            <constraint firstItem="fjP-mG-PBk" firstAttribute="leading" secondItem="E9W-kX-Ef1" secondAttribute="leading" id="4rK-ZZ-e6V"/>
-                                            <constraint firstAttribute="bottom" secondItem="f3l-Wl-SNV" secondAttribute="bottom" constant="63" id="CBQ-hP-w0k"/>
-                                            <constraint firstItem="hVt-99-nm1" firstAttribute="centerX" secondItem="f3l-Wl-SNV" secondAttribute="centerX" id="Fqe-Wi-Y6k"/>
-                                            <constraint firstAttribute="trailing" secondItem="P5b-9J-6yK" secondAttribute="trailing" id="H4X-qm-XcI"/>
-                                            <constraint firstItem="E9W-kX-Ef1" firstAttribute="trailing" secondItem="hVt-99-nm1" secondAttribute="trailing" id="Pdd-hC-5Wn"/>
-                                            <constraint firstItem="P5b-9J-6yK" firstAttribute="top" secondItem="hVt-99-nm1" secondAttribute="bottom" constant="79" id="ZYJ-Wr-vQ8"/>
-                                            <constraint firstItem="hVt-99-nm1" firstAttribute="leading" secondItem="QOR-Ef-hdr" secondAttribute="leadingMargin" id="gUC-8H-BMt"/>
-                                            <constraint firstItem="fjP-mG-PBk" firstAttribute="trailing" secondItem="E9W-kX-Ef1" secondAttribute="trailing" id="jmF-7W-gVk"/>
-                                            <constraint firstItem="fjP-mG-PBk" firstAttribute="baseline" secondItem="E9W-kX-Ef1" secondAttribute="baseline" id="kuX-kD-b98"/>
-                                            <constraint firstItem="P5b-9J-6yK" firstAttribute="centerX" secondItem="f3l-Wl-SNV" secondAttribute="centerX" id="lBW-5G-5da"/>
-                                            <constraint firstItem="hVt-99-nm1" firstAttribute="top" secondItem="E9W-kX-Ef1" secondAttribute="bottom" constant="18" id="ouZ-uP-unr"/>
-                                            <constraint firstAttribute="bottom" secondItem="P5b-9J-6yK" secondAttribute="bottom" id="sVK-zX-53R"/>
-                                            <constraint firstItem="P5b-9J-6yK" firstAttribute="leading" secondItem="QOR-Ef-hdr" secondAttribute="leading" id="xxN-gv-Dns"/>
+                                            <constraint firstAttribute="width" constant="69" id="zS2-Rz-2Uh"/>
                                         </constraints>
-                                    </view>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="aVI-Ey-wRP" eventType="touchUpInside" id="HP6-ga-r3P"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="WRo-bE-Qg4" firstAttribute="centerX" secondItem="QJQ-Vp-we2" secondAttribute="centerX" id="0U0-lF-S5I"/>
                                     <constraint firstItem="QJQ-Vp-we2" firstAttribute="top" secondItem="7Ev-sz-SzQ" secondAttribute="top" constant="253" id="3z0-eQ-tZi"/>
                                     <constraint firstItem="QJQ-Vp-we2" firstAttribute="leading" secondItem="7Ev-sz-SzQ" secondAttribute="leadingMargin" id="4aY-a2-7LC"/>
-                                    <constraint firstItem="QOR-Ef-hdr" firstAttribute="trailing" secondItem="WRo-bE-Qg4" secondAttribute="trailing" id="9Lb-ga-p2s"/>
-                                    <constraint firstItem="QOR-Ef-hdr" firstAttribute="leading" secondItem="WRo-bE-Qg4" secondAttribute="leading" id="IJZ-A6-ajm"/>
+                                    <constraint firstItem="dlb-1u-GdM" firstAttribute="trailing" secondItem="WRo-bE-Qg4" secondAttribute="trailing" id="9SI-0w-5fc"/>
                                     <constraint firstItem="35k-7l-ihf" firstAttribute="centerX" secondItem="7Ev-sz-SzQ" secondAttribute="centerX" id="LmO-K3-UU3"/>
                                     <constraint firstAttribute="bottom" secondItem="35k-7l-ihf" secondAttribute="bottom" constant="121" id="OEy-s4-fZD"/>
+                                    <constraint firstItem="dlb-1u-GdM" firstAttribute="top" secondItem="WRo-bE-Qg4" secondAttribute="top" id="U60-j0-OIr"/>
                                     <constraint firstItem="QJQ-Vp-we2" firstAttribute="centerX" secondItem="35k-7l-ihf" secondAttribute="centerX" id="W0d-ht-pnq"/>
-                                    <constraint firstItem="QOR-Ef-hdr" firstAttribute="top" secondItem="WRo-bE-Qg4" secondAttribute="top" id="X4d-JU-cR4"/>
                                     <constraint firstItem="WRo-bE-Qg4" firstAttribute="leading" secondItem="7Ev-sz-SzQ" secondAttribute="leading" id="YdC-eQ-vmx"/>
                                     <constraint firstItem="WRo-bE-Qg4" firstAttribute="top" secondItem="7Ev-sz-SzQ" secondAttribute="topMargin" id="aud-6Z-DNA"/>
-                                    <constraint firstAttribute="bottom" secondItem="QOR-Ef-hdr" secondAttribute="bottom" id="ygs-tD-CSI"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="bottom" secondItem="SPo-6I-8RV" secondAttribute="top" id="2zG-HH-LCK"/>
+                            <constraint firstItem="QOR-Ef-hdr" firstAttribute="trailing" secondItem="7Ev-sz-SzQ" secondAttribute="trailing" id="8pY-cA-hFB"/>
                             <constraint firstAttribute="trailing" secondItem="7Ev-sz-SzQ" secondAttribute="trailing" id="Sna-Hp-CPd"/>
+                            <constraint firstItem="SPo-6I-8RV" firstAttribute="top" secondItem="QOR-Ef-hdr" secondAttribute="bottom" constant="14" id="Vns-Nl-7zl"/>
+                            <constraint firstItem="QOR-Ef-hdr" firstAttribute="leading" secondItem="7Ev-sz-SzQ" secondAttribute="leading" id="WN3-Ji-OR4"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="top" secondItem="s0a-nh-Bcb" secondAttribute="bottom" id="XOu-PS-3zR"/>
+                            <constraint firstItem="QOR-Ef-hdr" firstAttribute="centerY" secondItem="zMq-VL-AVa" secondAttribute="centerY" id="hDr-oT-TSg"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="leading" secondItem="zMq-VL-AVa" secondAttribute="leading" id="w1k-9i-IcY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="enterLocationView" destination="7Ev-sz-SzQ" id="XWz-tk-sXJ"/>
+                        <outlet property="linkTextField" destination="hVt-99-nm1" id="VBT-zF-0bB"/>
                         <outlet property="locationTextField" destination="QJQ-Vp-we2" id="gNG-8f-Zdm"/>
+                        <outlet property="mapView" destination="P5b-9J-6yK" id="b17-0r-Ac8"/>
                         <outlet property="postLinkView" destination="QOR-Ef-hdr" id="pA4-r4-hJo"/>
                     </connections>
                 </viewController>

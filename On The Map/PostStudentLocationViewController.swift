@@ -9,18 +9,32 @@
 import UIKit
 import CoreLocation
 import AddressBookUI
+import MapKit
 
-class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
+class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
 
+    let udacityClient = UdacityClient()
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var enterLocationView: UIView!
     @IBOutlet weak var postLinkView: UIView!
+    let geocoder = CLGeocoder()
+    
+    @IBOutlet weak var linkTextField: UITextField!
+    
+    // Variables to hold student location string, coordinates, and link
+    var locationString: String?
+    var coordinate: CLLocationCoordinate2D?
+    var mediaURL: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         locationTextField.delegate = self
+        linkTextField.delegate = self
+        postLinkView.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,24 +45,15 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func findOnMap(sender: AnyObject) {
         
-        //2. Grab the text if there is and assume it's the user's location if so
-        //3. Forward geocode to latitude/longitude
-        //3.1 If it fails, show alert
-        //3.2 Else hide enterLocationView and display enterLinkView
-        //        enterLocationView.hidden = true
-        
-        
-        
         //1. Check there is text in the locationTextField
         if locationTextField.text!.isEmpty {
             performUIUpdatesOnMain({ 
                 self.showAlert("Please enter your location")
             })
         } else {
-            let locationString = locationTextField.text
+            locationString = locationTextField.text
             print(locationString)
             
-            let geocoder = CLGeocoder()
             
         // Code to forward geocode the user's location string. Adapted from http://mhorga.org/2015/08/14/geocoding-in-ios.html
             geocoder.geocodeAddressString(locationString!, completionHandler: { (placemarks, error) in
@@ -62,19 +67,24 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
                         if placemarks?.count > 0 {
                             let placemark = placemarks?[0]
                             let location = placemark?.location
-                            let coordinate = location?.coordinate
-                            print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                            self.coordinate = location?.coordinate
+                            print("\nlat: \(self.coordinate!.latitude), long: \(self.coordinate!.longitude)")
                             
                             
                             // Hide current View
                             self.enterLocationView.hidden = true
+                            
                             // Show new view
+                            self.postLinkView.hidden = false
+                          
                             // Show map with pointer on coordinate
-    
-                            
-                            
-                            
-                            
+                            let coordinate = CLLocationCoordinate2D(latitude: self.coordinate!.latitude, longitude: self.coordinate!.longitude)
+                            var studentAnnotation = MKPointAnnotation()
+                            studentAnnotation.coordinate = coordinate
+                            studentAnnotation.title = "\(self.udacityClient.firstName) \(self.udacityClient.lastName)"
+                            performUIUpdatesOnMain({ 
+                                self.mapView.addAnnotation(studentAnnotation)
+                            })
                             
                             
                         } else {
@@ -88,6 +98,10 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func postStudentLocation(sender: AnyObject) {
+        
+    }
+    
     // Code for showing UIAlertController. Adapted from https://www.appcoda.com/uialertcontroller-swift-closures-enum/
     func showAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
@@ -97,6 +111,9 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func cancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
 
