@@ -10,6 +10,8 @@ import UIKit
 
 class PostStudentLocationViewController: UIViewController {
 
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var enterLocationView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,14 +24,8 @@ class PostStudentLocationViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func findOnMap(sender: AnyObject) {
+        enterLocationView.hidden = true
     }
-    */
 
 }
