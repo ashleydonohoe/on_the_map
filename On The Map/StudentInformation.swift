@@ -26,7 +26,7 @@ struct StudentInformation {
         uniqueKey = dictionary[ParseClient.JSONResponseKeys.UniqueKey] as? String ?? "None"
         firstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as? String ?? "None"
         lastName = dictionary[ParseClient.JSONResponseKeys.LastName] as? String ?? "None"
-        mapString = dictionary[ParseClient.JSONResponseKeys.MapString] as! String ?? "None"
+        mapString = dictionary[ParseClient.JSONResponseKeys.MapString] as? String ?? "None"
         mediaURL = dictionary[ParseClient.JSONResponseKeys.MediaURL] as? String ?? "None"
         latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as! Double
         longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as! Double

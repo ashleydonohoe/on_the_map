@@ -13,6 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     let udacityClient = UdacityClient()
     let parseClient = ParseClient()
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     var studentLocations = [StudentInformation]()
     
@@ -92,6 +93,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Function to get student data
     func getData() {
+        
+        activity.hidden = false
         // Get latest student data
         parseClient.getStudentInformation { (success, errorString) in
             if success {
@@ -132,6 +135,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 print(errorString)
                 self.showAlert("Could not download student data!")
             }
+            
+            performUIUpdatesOnMain({ 
+                self.activity.hidden = true
+            })
             
         }
 

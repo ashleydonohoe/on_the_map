@@ -14,6 +14,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let udacityClient = UdacityClient()
     let parseClient = ParseClient()
 
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var studentInfoTable: UITableView!
       var studentLocations = [StudentInformation]()
 
@@ -83,6 +84,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // Gets latest 100 student pins
     func getData() {
+        
+        activity.hidden = false
         parseClient.getStudentInformation { (success, errorString) in
             if success {
                 print("Student info gathered")
@@ -93,6 +96,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             } else {
                 print(errorString)
             }
+            
+            performUIUpdatesOnMain({ 
+                self.activity.hidden = true
+            })
         }
     }
     

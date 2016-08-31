@@ -180,20 +180,26 @@
                                     <outlet property="delegate" destination="aj8-DW-z2c" id="xc9-3F-CtE"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Exj-vY-ECJ">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ra1-jt-srP" firstAttribute="top" secondItem="rxD-d1-71K" secondAttribute="bottom" id="7Cn-Ro-2LO"/>
+                            <constraint firstItem="Exj-vY-ECJ" firstAttribute="centerX" secondItem="rxD-d1-71K" secondAttribute="centerX" id="Edv-eM-lUI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rxD-d1-71K" secondAttribute="trailing" constant="-20" id="Not-Nr-PRf"/>
                             <constraint firstItem="rxD-d1-71K" firstAttribute="leading" secondItem="vud-NF-gxA" secondAttribute="leadingMargin" constant="-20" id="R5J-EF-Brm"/>
                             <constraint firstItem="K06-pM-C9R" firstAttribute="top" secondItem="ra1-jt-srP" secondAttribute="bottom" id="T8t-Ae-GCf"/>
                             <constraint firstItem="rxD-d1-71K" firstAttribute="top" secondItem="hc6-NZ-iXL" secondAttribute="bottom" id="eZt-oS-9bu"/>
+                            <constraint firstItem="Exj-vY-ECJ" firstAttribute="centerY" secondItem="vud-NF-gxA" secondAttribute="centerY" id="uA5-8v-5WB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ra1-jt-srP" secondAttribute="trailing" constant="-20" id="vsd-k5-10F"/>
                             <constraint firstItem="ra1-jt-srP" firstAttribute="leading" secondItem="vud-NF-gxA" secondAttribute="leadingMargin" constant="-20" id="wEK-Ol-kGP"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="List-50" id="5ME-Zg-05L"/>
                     <connections>
+                        <outlet property="activity" destination="Exj-vY-ECJ" id="MM5-IE-YDG"/>
                         <outlet property="studentInfoTable" destination="ra1-jt-srP" id="dM0-gK-dL8"/>
                     </connections>
                 </viewController>
@@ -243,10 +249,15 @@
                                     <outlet property="delegate" destination="oUK-7K-4aB" id="4jh-xh-Cwb"/>
                                 </connections>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ui9-xd-CYT">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hc5-K9-kii" firstAttribute="top" secondItem="KwP-Vh-54Q" secondAttribute="bottom" id="Chg-zr-UZa"/>
+                            <constraint firstItem="ui9-xd-CYT" firstAttribute="centerY" secondItem="EpL-CY-OL9" secondAttribute="centerY" id="Jcg-x6-m9G"/>
+                            <constraint firstItem="ui9-xd-CYT" firstAttribute="centerX" secondItem="KwP-Vh-54Q" secondAttribute="centerX" id="ORU-Z1-zjD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KwP-Vh-54Q" secondAttribute="trailing" constant="-20" id="Qlx-oV-oGW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hc5-K9-kii" secondAttribute="trailing" constant="-20" id="Zaq-Xc-OLq"/>
                             <constraint firstItem="KwP-Vh-54Q" firstAttribute="top" secondItem="ZH3-fm-TCa" secondAttribute="bottom" id="e4H-Xd-bhg"/>
@@ -257,6 +268,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="Map-50" id="fel-ah-UeO"/>
                     <connections>
+                        <outlet property="activity" destination="ui9-xd-CYT" id="str-UY-w4m"/>
                         <outlet property="mapView" destination="Hc5-K9-kii" id="3cH-BU-Qxu"/>
                     </connections>
                 </viewController>
