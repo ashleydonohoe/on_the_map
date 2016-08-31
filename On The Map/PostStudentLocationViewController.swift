@@ -99,7 +99,16 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
     
     
     @IBAction func postStudentLocation(sender: AnyObject) {
+        if linkTextField.text!.isEmpty {
+            performUIUpdatesOnMain({
+                self.showAlert("Please enter a link")
+            })
+        } else {
         
+        ParseClient.sharedInstance().postStudentLocation((coordinate?.latitude)!, longitude: (coordinate?.longitude)!, mapString: locationString!) { (success, errorString) in
+            }
+            print("OK")
+        }
     }
     
     // Code for showing UIAlertController. Adapted from https://www.appcoda.com/uialertcontroller-swift-closures-enum/

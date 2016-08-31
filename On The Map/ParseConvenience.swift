@@ -28,7 +28,7 @@ extension ParseClient {
         }
     }
     
-    func postStudentLocation(latitude: Double, longitude: Double, mapString: String, completionHandlerForPostLocation: (success: Bool, userKey: String?, errorString: String?) -> Void) {
+    func postStudentLocation(latitude: Double, longitude: Double, mapString: String, completionHandlerForPostLocation: (success: Bool, errorString: String?) -> Void) {
     }
 }
 
