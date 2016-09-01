@@ -290,6 +290,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="1Nm-jF-32b">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOR-Ef-hdr">
                                 <rect key="frame" x="0.0" y="14" width="600" height="572"/>
                                 <subviews>
@@ -411,6 +414,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="1Nm-jF-32b" firstAttribute="centerX" secondItem="QOR-Ef-hdr" secondAttribute="centerX" id="1BX-Zd-WbE"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="bottom" secondItem="SPo-6I-8RV" secondAttribute="top" id="2zG-HH-LCK"/>
                             <constraint firstItem="QOR-Ef-hdr" firstAttribute="trailing" secondItem="7Ev-sz-SzQ" secondAttribute="trailing" id="8pY-cA-hFB"/>
                             <constraint firstAttribute="trailing" secondItem="7Ev-sz-SzQ" secondAttribute="trailing" id="Sna-Hp-CPd"/>
@@ -418,10 +422,12 @@
                             <constraint firstItem="QOR-Ef-hdr" firstAttribute="leading" secondItem="7Ev-sz-SzQ" secondAttribute="leading" id="WN3-Ji-OR4"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="top" secondItem="s0a-nh-Bcb" secondAttribute="bottom" id="XOu-PS-3zR"/>
                             <constraint firstItem="QOR-Ef-hdr" firstAttribute="centerY" secondItem="zMq-VL-AVa" secondAttribute="centerY" id="hDr-oT-TSg"/>
+                            <constraint firstItem="1Nm-jF-32b" firstAttribute="centerY" secondItem="QOR-Ef-hdr" secondAttribute="centerY" id="uih-IB-b04"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="leading" secondItem="zMq-VL-AVa" secondAttribute="leading" id="w1k-9i-IcY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activity" destination="1Nm-jF-32b" id="WCI-Jj-Lnc"/>
                         <outlet property="enterLocationView" destination="7Ev-sz-SzQ" id="XWz-tk-sXJ"/>
                         <outlet property="linkTextField" destination="hVt-99-nm1" id="VBT-zF-0bB"/>
                         <outlet property="locationTextField" destination="QJQ-Vp-we2" id="gNG-8f-Zdm"/>

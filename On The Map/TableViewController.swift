@@ -69,11 +69,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             app.openURL(NSURL(string: link)!)
         }
     }
-    
-    // Function to post new student location
-    @IBAction func postStudentLocation(sender: AnyObject) {
-        
-    }
+
     
     @IBAction func refreshStudentData(sender: AnyObject) {
         self.studentLocations = []

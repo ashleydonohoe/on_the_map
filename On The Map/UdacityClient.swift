@@ -28,6 +28,11 @@ class UdacityClient: NSObject {
     // API client method for
     func udacityTaskForGetUserInfoMethod(completionHandlerForGet: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
+        func sendError(error:String) {
+            let userInfo = [NSLocalizedDescriptionKey: error]
+            completionHandlerForGet(result: nil, error: NSError(domain: "udacityTaskForGetUserInfoMethod", code: 1, userInfo: userInfo))
+        }
+        
         // Make URL for request
         let urlString = Constants.BaseURL + Methods.UserInfo + self.userID!
         let url = NSURL(string: urlString)
@@ -36,19 +41,19 @@ class UdacityClient: NSObject {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                sendError("An error has occurred")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                print("Your request returned a status code other than 2xx!")
+                sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                print("No data was returned by the request!")
+                sendError("No data was returned by the request!")
                 return
             }
             
@@ -74,9 +79,6 @@ class UdacityClient: NSObject {
             
             func sendError(error:String) {
                 let userInfo = [NSLocalizedDescriptionKey: error]
-                let alertView = UIAlertView(title: "Login Error", message: "Couldn't login", delegate: self, cancelButtonTitle: "OK")
-                alertView.tag = 1
-                alertView.show()
                 completionHandlerForLogin(result: nil, error: NSError(domain: "udacityTaskForLoginMethod", code: 1, userInfo: userInfo))
             }
             

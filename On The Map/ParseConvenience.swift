@@ -37,17 +37,13 @@ extension ParseClient {
         
          let jsonBody = "{\"uniqueKey\":  \"\(uniqueKey)\", \"firstName\":  \"\(firstName)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\":\(latitude), \"longitude\": \(longitude)}"
         
-        print(jsonBody)
         
-//       let jsonBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doeee\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
         taskForPOSTMethod(jsonBody) { (result, error) in
             if let error = error {
-                print(error)
                 completionHandlerForPostLocation(success: false, errorString: "Could not connect!")
             } else {
                 print(result)
                 if let objectID = result![JSONResponseKeys.ObjectId] as? String {
-                    print(objectID)
                     completionHandlerForPostLocation(success: true, errorString: nil)
                 }
             }

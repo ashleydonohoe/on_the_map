@@ -16,7 +16,6 @@ extension UdacityClient {
        createSession(username, password: password) { (success, userKey, errorString) in
         if success {
             
-            print(userKey)
             self.userID = userKey
             
             self.getUserInfo(self.userID, completionHandlerForUserInfo: { (success, firstName, lastName, errorString) in
@@ -43,9 +42,7 @@ extension UdacityClient {
         
         udacityTaskForLoginMethod(jsonBody) { (result, error) in
             if let error = error {
-                print(error)
-                completionHandlerForSession(success: false, userKey: nil, errorString: "Could not connect!")
-                self.showUdacityAlert("Could not connect!")
+                completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.LoginError)
             } else {
                 if let accountStatus = result![JSONResponseKeys.Account] as? [String: AnyObject] where (accountStatus[JSONResponseKeys.Registered] as? Bool == true) {
                     
@@ -54,7 +51,6 @@ extension UdacityClient {
                     completionHandlerForSession(success: true, userKey: userKey, errorString: nil)
                 } else {
                     completionHandlerForSession(success: false, userKey: nil, errorString: "Cannot find registered status")
-                    self.showUdacityAlert("Username or password is incorrect")
                 }
             }
         }
@@ -62,11 +58,10 @@ extension UdacityClient {
     }
     
     private func getUserInfo(userKey: String?, completionHandlerForUserInfo: (success: Bool, firstName: String?, lastName: String?, errorString: String?) -> Void) {
-        print("Getting user info")
         
         udacityTaskForGetUserInfoMethod { (result, error) in
             if let error = error {
-                print(error)
+
                 completionHandlerForUserInfo(success: false, firstName: nil, lastName: nil, errorString: "Couldn't get user info")
             } else {
                 if let userInfo = result[JSONResponseKeys.User] as? [String: AnyObject],
@@ -85,26 +80,13 @@ extension UdacityClient {
     }
     
     private func destroySession(completionHandlerForDeleteSession: (success: Bool, errorString: String?) -> Void) {
-        print("destroying session")
         
         udacityTaskForDeleteSession { (result, error) in
             if let error = error {
-                print(error)
                 completionHandlerForDeleteSession(success: false, errorString: "Could not delete session")
             } else {
                 completionHandlerForDeleteSession(success: true, errorString: nil)
             }
         }
-    }
-    
-    // Instruction on adding AlertView taken from http://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
-    
-    private func showUdacityAlert(alertText: String) {
-        performUIUpdatesOnMain { 
-            let alertView = UIAlertView(title: "Login Error", message: alertText, delegate: self, cancelButtonTitle: "OK")
-            alertView.tag = 1
-            alertView.show()
-        }
-        
     }
 }

@@ -19,8 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     override func viewWillAppear(animated: Bool) {
-        print("View will appear")
-        
+        // Grabs student data and makes map points
         getData()
     }
     
@@ -66,7 +65,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.presentViewController(controller, animated: true, completion: nil)
                 })
             } else {
-                print("Could not end session: \(error)")
                 self.showAlert("Could not log out!")
             }
         }
@@ -86,10 +84,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    // Function to post new student location
-    @IBAction func postStudentLocation(sender: AnyObject) {
-        
-    }
     
     // Function to get student data
     func getData() {

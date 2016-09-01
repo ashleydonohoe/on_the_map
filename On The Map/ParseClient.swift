@@ -31,8 +31,6 @@ class ParseClient: NSObject {
     // API method for get requests
     func taskForGETMethod(var parameters: [String:AnyObject], completionHandlerForGET: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        print("Starting get")
-        
         /* 2/3. Build the URL, Configure the request */
         
         let urlString = Constants.BaseURL + "?order=-updatedAt&limit=100"
@@ -127,23 +125,6 @@ class ParseClient: NSObject {
         return task
         
     }
-    
-//    
-//    // Function adapted from TheMovieManager
-//    private func parseURLFromParameters(parameters: [String: AnyObject], withPathExtension: String? = nil) -> NSURL {
-//        let components = NSURLComponents()
-//        components.scheme = ParseClient.Constants.ApiScheme
-//        components.host = ParseClient.Constants.ApiHost
-//        components.path = ParseClient.Constants.ApiPath + (withPathExtension ?? "")
-//        
-//        for(key, value) in parameters {
-//            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
-//            components.queryItems!.append(queryItem)
-//        }
-//        
-//        return components.URL!
-//        
-//    }
     
     // Function to convert data. Adapted from Movie Manager app in iOS Networking course
     func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {

@@ -13,6 +13,7 @@ import MapKit
 
 class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
 
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var enterLocationView: UIView!
@@ -36,6 +37,7 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
         postLinkView.hidden = true
         
         print(UdacityClient.sharedInstance().lastName)
+        activity.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +55,9 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
             })
         } else {
             locationString = locationTextField.text
-            print(locationString)
+            activity.hidden = false
+            
+            activity.startAnimating()
             
             
         // Code to forward geocode the user's location string. Adapted from http://mhorga.org/2015/08/14/geocoding-in-ios.html
@@ -61,6 +65,8 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                         if error != nil {
                             print(error)
                             performUIUpdatesOnMain({
+                                self.activity.hidden = true
+                                self.activity.stopAnimating()
                                 self.showAlert("An Error has occurred")
                             })
                             return
@@ -80,10 +86,12 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                           
                             // Show map with pointer on coordinate
                             let coordinate = CLLocationCoordinate2D(latitude: self.coordinate!.latitude, longitude: self.coordinate!.longitude)
-                            var studentAnnotation = MKPointAnnotation()
+                            let studentAnnotation = MKPointAnnotation()
                             studentAnnotation.coordinate = coordinate
                             studentAnnotation.title = "\(UdacityClient.sharedInstance().firstName!) \(UdacityClient.sharedInstance().lastName!)"
                             performUIUpdatesOnMain({
+                                self.activity.hidden = true
+                                self.activity.stopAnimating()
                                 self.mapView.centerCoordinate = coordinate
                                 self.mapView.addAnnotation(studentAnnotation)
                             })
@@ -104,18 +112,23 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                 self.showAlert("Please enter a link")
             })
         } else {
+            activity.hidden = false
+            activity.startAnimating()
             let lat = Double((coordinate?.latitude)!)
-            print(lat)
             let long = Double((coordinate?.longitude)!)
-            print(long)
             mediaURL = linkTextField.text!
             
             ParseClient.sharedInstance().postStudentLocation(lat, longitude: long, mediaURL: mediaURL!, mapString: locationString!) { (success, errorString) in
-                print(UdacityClient.sharedInstance().firstName)
+                
+                self.activity.stopAnimating()
+                self.activity.hidden = true
+                
                 if success {
                     self.dismissViewControllerAnimated(true, completion: nil)
                 } else {
-                    self.showAlert("Error posting location")
+                    performUIUpdatesOnMain({ 
+                        self.showAlert("Error posting location")
+                    })
                 }
             }
         }
