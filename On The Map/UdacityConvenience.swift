@@ -15,23 +15,26 @@ extension UdacityClient {
     func loginWithUdacity(username: String, password: String, hostViewController: UIViewController, completionHandlerForLogin: (success: Bool, errorString: String?) -> Void) {
         
        createSession(username, password: password) { (success, userKey, errorString) in
+        
         if success {
             
             self.userID = userKey
+            completionHandlerForLogin(success: success, errorString: errorString)
             
             self.getUserInfo(self.userID, completionHandlerForUserInfo: { (success, firstName, lastName, errorString) in
                 if success {
                     if let firstName = firstName, lastName = lastName {
                         self.firstName = firstName
                         self.lastName = lastName
+                        completionHandlerForLogin(success: success, errorString: errorString)
                     }
-                    completionHandlerForLogin(success: true, errorString: nil)
                 } else {
                     completionHandlerForLogin(success: success, errorString: errorString)
                 }
             })
                 
             } else {
+            print(errorString)
                 completionHandlerForLogin(success: success, errorString: errorString)
             }
         }
@@ -43,18 +46,31 @@ extension UdacityClient {
         let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         
         udacityTaskForLoginMethod(jsonBody) { (result, error) in
+   
             if error != nil {
-                completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.ConnectionError)
+                print(error)
+                let errorMsg = error?.localizedDescription
+                completionHandlerForSession(success: false, userKey: nil, errorString: String(UTF8String: errorMsg!)!)
+                return
             } else {
-                if let accountStatus = result![JSONResponseKeys.Account] as? [String: AnyObject] where (accountStatus[JSONResponseKeys.Registered] as? Bool == true) {
+                if let accountStatus = result![JSONResponseKeys.Account] as? [String: AnyObject] {
+                    if let registered = accountStatus["registered"] as? Bool {
+                        if registered == true {
+                            let userKey = accountStatus[JSONResponseKeys.UserKey] as? String
+                            self.userID = userKey
+                            completionHandlerForSession(success: true, userKey: userKey, errorString: nil)
+                        } else {
+                            completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.LoginError)
+                        }
+                    } else {
+                        completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.ConnectionError)
+                    }
                     
-                    let userKey = accountStatus[JSONResponseKeys.UserKey] as? String
-                    self.userID = userKey
-                    completionHandlerForSession(success: true, userKey: userKey, errorString: nil)
                 } else {
                     completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.LoginError)
                 }
             }
+
         }
         
     }

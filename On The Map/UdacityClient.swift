@@ -84,13 +84,13 @@ class UdacityClient: NSObject {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+                sendError(ErrorMessages.ConnectionError)
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError(ErrorMessages.ConnectionError)
+                sendError(ErrorMessages.LoginError)
                 return
             }
             
