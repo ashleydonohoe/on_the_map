@@ -65,8 +65,7 @@ class ParseClient: NSObject {
                 sendError("No data was returned by the request!")
                 return
             }
-            
-            print("Checked data")
+    
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)

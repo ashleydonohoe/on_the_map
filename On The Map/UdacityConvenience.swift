@@ -42,7 +42,7 @@ extension UdacityClient {
         
         udacityTaskForLoginMethod(jsonBody) { (result, error) in
             if let error = error {
-                completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.LoginError)
+                completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.ConnectionError)
             } else {
                 if let accountStatus = result![JSONResponseKeys.Account] as? [String: AnyObject] where (accountStatus[JSONResponseKeys.Registered] as? Bool == true) {
                     
@@ -50,7 +50,7 @@ extension UdacityClient {
                     self.userID = userKey
                     completionHandlerForSession(success: true, userKey: userKey, errorString: nil)
                 } else {
-                    completionHandlerForSession(success: false, userKey: nil, errorString: "Cannot find registered status")
+                    completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.LoginError)
                 }
             }
         }
