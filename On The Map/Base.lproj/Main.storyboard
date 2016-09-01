@@ -290,9 +290,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="1Nm-jF-32b">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOR-Ef-hdr">
                                 <rect key="frame" x="0.0" y="14" width="600" height="572"/>
                                 <subviews>
@@ -334,15 +331,20 @@
                                             <action selector="cancel:" destination="aVI-Ey-wRP" eventType="touchUpInside" id="jRa-yd-4d0"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="1Nm-jF-32b">
+                                        <rect key="frame" x="290" y="276" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="E9W-kX-Ef1" firstAttribute="top" secondItem="QOR-Ef-hdr" secondAttribute="topMargin" id="2Mt-7c-Pss"/>
                                     <constraint firstItem="fjP-mG-PBk" firstAttribute="leading" secondItem="E9W-kX-Ef1" secondAttribute="leading" id="4rK-ZZ-e6V"/>
                                     <constraint firstAttribute="bottom" secondItem="f3l-Wl-SNV" secondAttribute="bottom" constant="63" id="CBQ-hP-w0k"/>
+                                    <constraint firstItem="1Nm-jF-32b" firstAttribute="centerY" secondItem="QOR-Ef-hdr" secondAttribute="centerY" id="DS9-tf-F6d"/>
                                     <constraint firstItem="hVt-99-nm1" firstAttribute="centerX" secondItem="f3l-Wl-SNV" secondAttribute="centerX" id="Fqe-Wi-Y6k"/>
                                     <constraint firstAttribute="trailing" secondItem="P5b-9J-6yK" secondAttribute="trailing" id="H4X-qm-XcI"/>
                                     <constraint firstItem="E9W-kX-Ef1" firstAttribute="trailing" secondItem="hVt-99-nm1" secondAttribute="trailing" id="Pdd-hC-5Wn"/>
+                                    <constraint firstItem="1Nm-jF-32b" firstAttribute="centerX" secondItem="f3l-Wl-SNV" secondAttribute="centerX" id="SHs-29-U4T"/>
                                     <constraint firstItem="P5b-9J-6yK" firstAttribute="top" secondItem="hVt-99-nm1" secondAttribute="bottom" constant="79" id="ZYJ-Wr-vQ8"/>
                                     <constraint firstItem="hVt-99-nm1" firstAttribute="leading" secondItem="QOR-Ef-hdr" secondAttribute="leadingMargin" id="gUC-8H-BMt"/>
                                     <constraint firstItem="fjP-mG-PBk" firstAttribute="trailing" secondItem="E9W-kX-Ef1" secondAttribute="trailing" id="jmF-7W-gVk"/>
@@ -396,25 +398,29 @@
                                             <action selector="cancel:" destination="aVI-Ey-wRP" eventType="touchUpInside" id="HP6-ga-r3P"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="76Y-ha-sae">
+                                        <rect key="frame" x="290" y="280" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="WRo-bE-Qg4" firstAttribute="centerX" secondItem="QJQ-Vp-we2" secondAttribute="centerX" id="0U0-lF-S5I"/>
                                     <constraint firstItem="QJQ-Vp-we2" firstAttribute="top" secondItem="7Ev-sz-SzQ" secondAttribute="top" constant="253" id="3z0-eQ-tZi"/>
                                     <constraint firstItem="QJQ-Vp-we2" firstAttribute="leading" secondItem="7Ev-sz-SzQ" secondAttribute="leadingMargin" id="4aY-a2-7LC"/>
+                                    <constraint firstItem="76Y-ha-sae" firstAttribute="centerX" secondItem="QJQ-Vp-we2" secondAttribute="centerX" id="7gC-4e-jW5"/>
                                     <constraint firstItem="dlb-1u-GdM" firstAttribute="trailing" secondItem="WRo-bE-Qg4" secondAttribute="trailing" id="9SI-0w-5fc"/>
                                     <constraint firstItem="35k-7l-ihf" firstAttribute="centerX" secondItem="7Ev-sz-SzQ" secondAttribute="centerX" id="LmO-K3-UU3"/>
                                     <constraint firstAttribute="bottom" secondItem="35k-7l-ihf" secondAttribute="bottom" constant="121" id="OEy-s4-fZD"/>
                                     <constraint firstItem="dlb-1u-GdM" firstAttribute="top" secondItem="WRo-bE-Qg4" secondAttribute="top" id="U60-j0-OIr"/>
                                     <constraint firstItem="QJQ-Vp-we2" firstAttribute="centerX" secondItem="35k-7l-ihf" secondAttribute="centerX" id="W0d-ht-pnq"/>
                                     <constraint firstItem="WRo-bE-Qg4" firstAttribute="leading" secondItem="7Ev-sz-SzQ" secondAttribute="leading" id="YdC-eQ-vmx"/>
+                                    <constraint firstItem="76Y-ha-sae" firstAttribute="centerY" secondItem="7Ev-sz-SzQ" secondAttribute="centerY" id="ZEN-H9-NGk"/>
                                     <constraint firstItem="WRo-bE-Qg4" firstAttribute="top" secondItem="7Ev-sz-SzQ" secondAttribute="topMargin" id="aud-6Z-DNA"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="1Nm-jF-32b" firstAttribute="centerX" secondItem="QOR-Ef-hdr" secondAttribute="centerX" id="1BX-Zd-WbE"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="bottom" secondItem="SPo-6I-8RV" secondAttribute="top" id="2zG-HH-LCK"/>
                             <constraint firstItem="QOR-Ef-hdr" firstAttribute="trailing" secondItem="7Ev-sz-SzQ" secondAttribute="trailing" id="8pY-cA-hFB"/>
                             <constraint firstAttribute="trailing" secondItem="7Ev-sz-SzQ" secondAttribute="trailing" id="Sna-Hp-CPd"/>
@@ -422,12 +428,12 @@
                             <constraint firstItem="QOR-Ef-hdr" firstAttribute="leading" secondItem="7Ev-sz-SzQ" secondAttribute="leading" id="WN3-Ji-OR4"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="top" secondItem="s0a-nh-Bcb" secondAttribute="bottom" id="XOu-PS-3zR"/>
                             <constraint firstItem="QOR-Ef-hdr" firstAttribute="centerY" secondItem="zMq-VL-AVa" secondAttribute="centerY" id="hDr-oT-TSg"/>
-                            <constraint firstItem="1Nm-jF-32b" firstAttribute="centerY" secondItem="QOR-Ef-hdr" secondAttribute="centerY" id="uih-IB-b04"/>
                             <constraint firstItem="7Ev-sz-SzQ" firstAttribute="leading" secondItem="zMq-VL-AVa" secondAttribute="leading" id="w1k-9i-IcY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activity" destination="1Nm-jF-32b" id="WCI-Jj-Lnc"/>
+                        <outlet property="activity2" destination="76Y-ha-sae" id="D88-wb-guv"/>
                         <outlet property="enterLocationView" destination="7Ev-sz-SzQ" id="XWz-tk-sXJ"/>
                         <outlet property="linkTextField" destination="hVt-99-nm1" id="VBT-zF-0bB"/>
                         <outlet property="locationTextField" destination="QJQ-Vp-we2" id="gNG-8f-Zdm"/>

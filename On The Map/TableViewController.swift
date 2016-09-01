@@ -20,6 +20,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        activity.hidden = true
 
     }
     
@@ -79,6 +80,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // Gets latest 100 student pins
     func getData() {
         activity.hidden = false
+        activity.startAnimating()
         ParseClient.sharedInstance().getStudentInformation { (success, errorString) in
             if success {
                 print("Student info gathered")
@@ -93,6 +95,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             performUIUpdatesOnMain({ 
                 self.activity.hidden = true
+                self.activity.stopAnimating()
             })
         }
     }

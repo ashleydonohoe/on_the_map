@@ -89,6 +89,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func getData() {
         
         activity.hidden = false
+        activity.startAnimating()
         // Get latest student data
         ParseClient.sharedInstance().getStudentInformation { (success, errorString) in
             if success {
@@ -126,12 +127,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     
                 })
             } else {
-                print(errorString)
                 self.showAlert("Could not download student data!")
             }
             
             performUIUpdatesOnMain({ 
                 self.activity.hidden = true
+                self.activity.stopAnimating()
             })
             
         }

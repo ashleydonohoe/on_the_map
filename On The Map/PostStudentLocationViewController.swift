@@ -13,6 +13,7 @@ import MapKit
 
 class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
 
+    @IBOutlet weak var activity2: UIActivityIndicatorView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationTextField: UITextField!
@@ -38,6 +39,7 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
         
         print(UdacityClient.sharedInstance().lastName)
         activity.hidden = true
+        activity2.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,13 +57,14 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
             })
         } else {
             locationString = locationTextField.text
-            activity.hidden = false
-            
-            activity.startAnimating()
             
             
         // Code to forward geocode the user's location string. Adapted from http://mhorga.org/2015/08/14/geocoding-in-ios.html
             geocoder.geocodeAddressString(locationString!, completionHandler: { (placemarks, error) in
+                
+                self.activity.hidden = false
+                
+                self.activity.startAnimating()
                         if error != nil {
                             print(error)
                             performUIUpdatesOnMain({
@@ -112,16 +115,15 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                 self.showAlert("Please enter a link")
             })
         } else {
-            activity.hidden = false
-            activity.startAnimating()
             let lat = Double((coordinate?.latitude)!)
             let long = Double((coordinate?.longitude)!)
             mediaURL = linkTextField.text!
             
             ParseClient.sharedInstance().postStudentLocation(lat, longitude: long, mediaURL: mediaURL!, mapString: locationString!) { (success, errorString) in
                 
-                self.activity.stopAnimating()
-                self.activity.hidden = true
+                self.activity2.hidden = false
+                self.activity2.startAnimating()
+                
                 
                 if success {
                     self.dismissViewControllerAnimated(true, completion: nil)
@@ -130,6 +132,8 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                         self.showAlert("Error posting location")
                     })
                 }
+                self.activity2.stopAnimating()
+                self.activity2.hidden = true
             }
         }
     }
