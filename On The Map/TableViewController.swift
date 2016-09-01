@@ -64,8 +64,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let app = UIApplication.sharedApplication()
-        if let link = student.mediaURL as? String {
-            app.openURL(NSURL(string: link)!)
+        
+        if let link = NSURL(string: student.mediaURL) {
+            if app.canOpenURL(link) {
+                app.openURL(link)
+            } else {
+                showAlert("Cannot open URL")
+            }
         }
     }
     

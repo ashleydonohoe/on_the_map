@@ -49,12 +49,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
-            if let toOpen = view.annotation?.subtitle {
-                app.openURL(NSURL(string: toOpen!)!)
+            let link = NSURL(string:((view.annotation?.subtitle)!)!)
+            if let toOpen = link {
+                if app.canOpenURL(toOpen) {
+                    app.openURL(toOpen)
+                } else {
+                    showAlert("Cannot open URL")
+                }
             }
         }
     }
     
+
     
     @IBAction func logout(sender: AnyObject) {
         print("logging out")

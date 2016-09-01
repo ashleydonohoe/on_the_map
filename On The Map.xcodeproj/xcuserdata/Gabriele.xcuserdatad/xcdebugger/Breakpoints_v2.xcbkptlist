@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/TableViewController.swift"
-            timestampString = "494396233.773979"
+            timestampString = "494396505.793543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,7 +586,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseClient.swift"
-                  timestampString = "494396234.855152"
+                  timestampString = "494396724.507085"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "83"
@@ -601,7 +601,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseClient.swift"
-                  timestampString = "494396234.855296"
+                  timestampString = "494396724.50723"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
@@ -666,7 +666,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseConvenience.swift"
-                  timestampString = "494396234.857164"
+                  timestampString = "494396724.509001"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -681,7 +681,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseConvenience.swift"
-                  timestampString = "494396234.857259"
+                  timestampString = "494396724.509102"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
@@ -762,7 +762,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/PostStudentLocationViewController.swift"
-                  timestampString = "494396234.858902"
+                  timestampString = "494396724.510904"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -777,7 +777,7 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/PostStudentLocationViewController.swift"
-                  timestampString = "494396234.859003"
+                  timestampString = "494396724.511052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -826,13 +826,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/TableViewController.swift"
-            timestampString = "494396181.34568"
+            timestampString = "494396505.793543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "logout(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "On The Map/MapViewController.swift"
+            timestampString = "494396723.436387"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "mapView(_:annotationView:calloutAccessoryControlTapped:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "On_The_Map.MapViewController.mapView (__ObjC.MKMapView, annotationView : __ObjC.MKAnnotationView, calloutAccessoryControlTapped : __ObjC.UIControl) -&gt; ()"
+                  moduleName = "On The Map"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/MapViewController.swift"
+                  timestampString = "494396618.735045"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "On_The_Map.MapViewController.mapView (__ObjC.MKMapView, annotationView : __ObjC.MKAnnotationView, calloutAccessoryControlTapped : __ObjC.UIControl) -&gt; ()"
+                  moduleName = "On The Map"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/MapViewController.swift"
+                  timestampString = "494396618.735196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "820">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
