@@ -37,8 +37,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         UdacityClient.sharedInstance().udacityTaskForDeleteSession { (result, error) in
             if error == nil {
                 performUIUpdatesOnMain({
-                    let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
-                    self.presentViewController(controller, animated: true, completion: nil)
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
             } else {
                 print("Could not end session: \(error)")
@@ -62,6 +61,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student = Model.sharedInstance().studentLocations[indexPath.row]
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let app = UIApplication.sharedApplication()
         if let link = student.mediaURL as? String {

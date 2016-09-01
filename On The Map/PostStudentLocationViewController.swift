@@ -35,8 +35,6 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
         locationTextField.delegate = self
         linkTextField.delegate = self
         postLinkView.hidden = true
-        
-        print(UdacityClient.sharedInstance().lastName)
         activity.hidden = true
     }
 
@@ -78,7 +76,6 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                             let placemark = placemarks?[0]
                             let location = placemark?.location
                             self.coordinate = location?.coordinate
-                            print("\nlat: \(self.coordinate!.latitude), long: \(self.coordinate!.longitude)")
                             
                             
                             // Hide current View
@@ -99,7 +96,6 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                                 self.mapView.addAnnotation(studentAnnotation)
                             })
                         } else {
-                            print("No coordinates found")
                             performUIUpdatesOnMain({
                                 self.activity.hidden = true
                                 self.activity.stopAnimating()

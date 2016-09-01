@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/TableViewController.swift"
-            timestampString = "494395349.919506"
+            timestampString = "494396233.773979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/PostStudentLocationViewController.swift"
-            timestampString = "494387547.7454"
+            timestampString = "494395842.92441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "findOnMap(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/PostStudentLocationViewController.swift"
-            timestampString = "494387547.7454"
+            timestampString = "494395842.92441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "findOnMap(_:)"
             landmarkType = "5">
             <Locations>
@@ -586,11 +586,11 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseClient.swift"
-                  timestampString = "494385786.641435"
+                  timestampString = "494396234.855152"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
                   offsetFromSymbolStart = "1112">
                </Location>
                <Location
@@ -601,11 +601,11 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseClient.swift"
-                  timestampString = "494385786.641538"
+                  timestampString = "494396234.855296"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>
@@ -666,11 +666,11 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseConvenience.swift"
-                  timestampString = "494385786.643234"
+                  timestampString = "494396234.857164"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
                   offsetFromSymbolStart = "1888">
                </Location>
                <Location
@@ -681,11 +681,11 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseConvenience.swift"
-                  timestampString = "494385786.64336"
+                  timestampString = "494396234.857259"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>
@@ -721,38 +721,6 @@
             endingLineNumber = "46"
             landmarkName = "postStudentLocation(_:longitude:mediaURL:mapString:completionHandlerForPostLocation:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "On_The_Map.ParseClient.(postStudentLocation (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Double&gt;, longitude : Swift.ImplicitlyUnwrappedOptional&lt;Swift.Double&gt;, mediaURL : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, mapString : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, completionHandlerForPostLocation : (success : Swift.Bool, errorString : Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "On The Map"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseConvenience.swift"
-                  timestampString = "494385786.644185"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "304">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "On_The_Map.ParseClient.(postStudentLocation (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Double&gt;, longitude : Swift.ImplicitlyUnwrappedOptional&lt;Swift.Double&gt;, mediaURL : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, mapString : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, completionHandlerForPostLocation : (success : Swift.Bool, errorString : Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "On The Map"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/ParseConvenience.swift"
-                  timestampString = "494385786.644331"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "1028">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -794,12 +762,12 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/PostStudentLocationViewController.swift"
-                  timestampString = "494385786.645441"
+                  timestampString = "494396234.858902"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "880">
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "572">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -809,12 +777,12 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Gabriele/Dropbox/UdacityNanoDegree/iOS_Nanodegree/On%20The%20Map/On%20The%20Map/PostStudentLocationViewController.swift"
-                  timestampString = "494385786.645534"
+                  timestampString = "494396234.859003"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "2176">
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "2180">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -848,6 +816,22 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "loginToUdacity(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "On The Map/TableViewController.swift"
+            timestampString = "494396181.34568"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "logout(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

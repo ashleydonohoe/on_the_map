@@ -60,9 +60,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         print("logging out")
         UdacityClient.sharedInstance().udacityTaskForDeleteSession { (result, error) in
             if error == nil {
-                performUIUpdatesOnMain({ 
-                    let controller = self.storyboard?.instantiateViewControllerWithIdentifier("UdacityLoginViewController") as! LoginViewController
-                    self.presentViewController(controller, animated: true, completion: nil)
+                performUIUpdatesOnMain({
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
             } else {
                 self.showAlert("Could not log out!")
