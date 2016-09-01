@@ -35,7 +35,7 @@ class ParseClient: NSObject {
         
         /* 2/3. Build the URL, Configure the request */
         
-        let urlString = "https://parse.udacity.com/parse/classes/StudentLocation?order=-updatedAt&limit=100"
+        let urlString = Constants.BaseURL + "?order=-updatedAt&limit=100"
         let url = NSURL(string: urlString)
         let request = NSMutableURLRequest(URL: url!)
         request.addValue(Constants.ApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
@@ -80,21 +80,70 @@ class ParseClient: NSObject {
         return task
     }
     
-    // Function adapted from TheMovieManager
-    private func parseURLFromParameters(parameters: [String: AnyObject], withPathExtension: String? = nil) -> NSURL {
-        let components = NSURLComponents()
-        components.scheme = ParseClient.Constants.ApiScheme
-        components.host = ParseClient.Constants.ApiHost
-        components.path = ParseClient.Constants.ApiPath + (withPathExtension ?? "")
+    //Function to post data
+    func taskForPOSTMethod(jsonBody: String?, completionHandlerForPOST: (result:AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        let urlString = Constants.BaseURL
+        let url = NSURL(string: urlString)
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        request.addValue(Constants.ApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(Constants.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = jsonBody!.dataUsingEncoding(NSUTF8StringEncoding)
         
-        for(key, value) in parameters {
-            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+            
+            func sendError(error:String) {
+                let userInfo = [NSLocalizedDescriptionKey: error]
+                completionHandlerForPOST(result: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError(ErrorMessages.ConnectionError)
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            
         }
         
-        return components.URL!
+        // 6. Start the request
+        task.resume()
+        
+        return task
         
     }
+    
+//    
+//    // Function adapted from TheMovieManager
+//    private func parseURLFromParameters(parameters: [String: AnyObject], withPathExtension: String? = nil) -> NSURL {
+//        let components = NSURLComponents()
+//        components.scheme = ParseClient.Constants.ApiScheme
+//        components.host = ParseClient.Constants.ApiHost
+//        components.path = ParseClient.Constants.ApiPath + (withPathExtension ?? "")
+//        
+//        for(key, value) in parameters {
+//            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+//            components.queryItems!.append(queryItem)
+//        }
+//        
+//        return components.URL!
+//        
+//    }
     
     // Function to convert data. Adapted from Movie Manager app in iOS Networking course
     func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {

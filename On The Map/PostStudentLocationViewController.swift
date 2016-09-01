@@ -104,10 +104,20 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                 self.showAlert("Please enter a link")
             })
         } else {
-        
-        ParseClient.sharedInstance().postStudentLocation((coordinate?.latitude)!, longitude: (coordinate?.longitude)!, mapString: locationString!) { (success, errorString) in
+            let lat = Double((coordinate?.latitude)!)
+            print(lat)
+            let long = Double((coordinate?.longitude)!)
+            print(long)
+            mediaURL = linkTextField.text!
+            
+            ParseClient.sharedInstance().postStudentLocation(lat, longitude: long, mediaURL: mediaURL!, mapString: locationString!) { (success, errorString) in
+                print(UdacityClient.sharedInstance().firstName)
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    self.showAlert("Error posting location")
+                }
             }
-            print("OK")
         }
     }
     
