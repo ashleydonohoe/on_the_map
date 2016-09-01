@@ -70,8 +70,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             app.openURL(NSURL(string: link)!)
         }
     }
-
     
+    
+    // Clears the current studentLocations and grabs the latest 100
     @IBAction func refreshStudentData(sender: AnyObject) {
         self.studentLocations = []
         getData()
