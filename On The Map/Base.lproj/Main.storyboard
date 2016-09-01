@@ -459,9 +459,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="List-50" width="20" height="20"/>
-        <image name="Map-50" width="20" height="20"/>
-        <image name="Marker Filled-50" width="40" height="40"/>
+        <image name="List-50" width="32" height="32"/>
+        <image name="Map-50" width="32" height="32"/>
+        <image name="Marker Filled-50" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LlY-97-zXe"/>

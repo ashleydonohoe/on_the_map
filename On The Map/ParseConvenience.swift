@@ -22,7 +22,7 @@ extension ParseClient {
                 completionHandlerForStudentInfo(success: false, errorString:  "\(error)")
             } else {
                 if let information = result![JSONResponseKeys.Results] as? [[String:AnyObject]] {
-                    self.studentLocations = StudentInformation.studentsFromResults(information)
+                    Model.sharedInstance().studentLocations = StudentInformation.studentsFromResults(information)
                     completionHandlerForStudentInfo(success: true, errorString: nil)
                 }
             }

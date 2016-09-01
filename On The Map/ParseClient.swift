@@ -10,15 +10,7 @@ import Foundation
 
 class ParseClient: NSObject {
     
-    var studentLocations: [StudentInformation]
-    
-    // Initialize for studentLocations
-    override init() {
-        studentLocations = [StudentInformation]()
-        super.init()
-    }
-    
-    
+
     //Allows client to act as singleton
     class func sharedInstance() -> ParseClient {
         struct Singleton {

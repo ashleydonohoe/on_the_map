@@ -13,8 +13,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var studentInfoTable: UITableView!
-      var studentLocations = [StudentInformation]()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +48,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentLocations.count
+        return Model.sharedInstance().studentLocations.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentInfoCell")! as UITableViewCell
-        let student = studentLocations[indexPath.row]
+        let student = Model.sharedInstance().studentLocations[indexPath.row]
         cell.textLabel!.text = student.firstName + " " + student.lastName
         cell.detailTextLabel?.text = student.mapString
         
@@ -63,7 +61,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student = studentLocations[indexPath.row]
+        let student = Model.sharedInstance().studentLocations[indexPath.row]
         
         let app = UIApplication.sharedApplication()
         if let link = student.mediaURL as? String {
@@ -74,7 +72,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // Clears the current studentLocations and grabs the latest 100
     @IBAction func refreshStudentData(sender: AnyObject) {
-        self.studentLocations = []
+        Model.sharedInstance().studentLocations = []
         getData()
     }
     
@@ -86,7 +84,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if success {
                 print("Student info gathered")
                 performUIUpdatesOnMain({
-                    self.studentLocations = ParseClient.sharedInstance().studentLocations
                     self.studentInfoTable.reloadData()
                 })
             } else {

@@ -13,7 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
-    var studentLocations = [StudentInformation]()
+//    var studentLocations = [StudentInformation]()
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -71,7 +71,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func refreshStudentData(sender: AnyObject) {
-        self.studentLocations = []
+        Model.sharedInstance().studentLocations = []
         getData()
     }
     
@@ -95,13 +95,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if success {
                 print("Student info gathered")
                 performUIUpdatesOnMain({
-                    self.studentLocations = ParseClient.sharedInstance().studentLocations
                     
                     // Get data for the map markers. Code adapted from PinSample app
                     var annotations = [MKPointAnnotation]()
                     
                     // Get coordinatates, names, and web links from each student
-                    for student in self.studentLocations {
+                    for student in Model.sharedInstance().studentLocations {
                         let lat = CLLocationDegrees(student.latitude )
                         let long = CLLocationDegrees(student.longitude )
                         
