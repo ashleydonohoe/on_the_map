@@ -26,5 +26,4 @@ class Model: NSObject {
         return Singleton.sharedInstance
     }
     
-    
 }

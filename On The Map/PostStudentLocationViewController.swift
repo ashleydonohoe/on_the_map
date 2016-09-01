@@ -55,9 +55,11 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
             })
         } else {
             locationString = locationTextField.text
-            self.activity.hidden = false
-            
-            self.activity.startAnimating()
+            performUIUpdatesOnMain({ 
+                self.activity.hidden = false
+                
+                self.activity.startAnimating()
+            })
             
             
         // Code to forward geocode the user's location string. Adapted from http://mhorga.org/2015/08/14/geocoding-in-ios.html
@@ -98,7 +100,9 @@ class PostStudentLocationViewController: UIViewController, UITextFieldDelegate, 
                             })
                         } else {
                             print("No coordinates found")
-                            performUIUpdatesOnMain({ 
+                            performUIUpdatesOnMain({
+                                self.activity.hidden = true
+                                self.activity.stopAnimating()
                                 self.showAlert("No coordinates found. Please check your location")
                     })
                 }
