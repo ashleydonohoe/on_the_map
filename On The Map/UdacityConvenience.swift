@@ -2,7 +2,7 @@
 //  UdacityConvenience.swift
 //  On The Map
 //
-//  Created by Gabriele on 8/28/16.
+//  Created by Ashley Donohoe on 8/28/16.
 //  Copyright © 2016 Ashley Donohoe. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import UIKit
 
 extension UdacityClient {
     
+    // This method handles the login process
     func loginWithUdacity(username: String, password: String, hostViewController: UIViewController, completionHandlerForLogin: (success: Bool, errorString: String?) -> Void) {
         
        createSession(username, password: password) { (success, userKey, errorString) in
@@ -36,12 +37,13 @@ extension UdacityClient {
         }
     }
     
+    // This allows the user to post a session if their credentials are valid
     private func createSession(username: String, password: String, completionHandlerForSession: (success: Bool, userKey: String?, errorString: String?) -> Void) {
         
         let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         
         udacityTaskForLoginMethod(jsonBody) { (result, error) in
-            if let error = error {
+            if error != nil {
                 completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.ConnectionError)
             } else {
                 if let accountStatus = result![JSONResponseKeys.Account] as? [String: AnyObject] where (accountStatus[JSONResponseKeys.Registered] as? Bool == true) {
@@ -57,10 +59,11 @@ extension UdacityClient {
         
     }
     
+    // This method grabs the user's name
     private func getUserInfo(userKey: String?, completionHandlerForUserInfo: (success: Bool, firstName: String?, lastName: String?, errorString: String?) -> Void) {
         
         udacityTaskForGetUserInfoMethod { (result, error) in
-            if let error = error {
+            if error != nil {
 
                 completionHandlerForUserInfo(success: false, firstName: nil, lastName: nil, errorString: "Couldn't get user info")
             } else {
@@ -79,10 +82,11 @@ extension UdacityClient {
 
     }
     
+    // This method allows the user to log out
     private func destroySession(completionHandlerForDeleteSession: (success: Bool, errorString: String?) -> Void) {
         
         udacityTaskForDeleteSession { (result, error) in
-            if let error = error {
+            if error != nil {
                 completionHandlerForDeleteSession(success: false, errorString: "Could not delete session")
             } else {
                 completionHandlerForDeleteSession(success: true, errorString: nil)

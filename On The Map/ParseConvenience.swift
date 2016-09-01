@@ -2,7 +2,7 @@
 //  ParseConvenience.swift
 //  On The Map
 //
-//  Created by Gabriele on 8/28/16.
+//  Created by Ashley Donohoe on 8/28/16.
 //  Copyright © 2016 Ashley Donohoe. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import Foundation
 
 extension ParseClient {
     
+    // Method for getting latest 100 posts
     func getStudentInformation(completionHandlerForStudentInfo: (success: Bool, errorString: String?) -> Void) {
         let parameters = [
             ParseClient.Parameters.Limit: 100,
@@ -28,6 +29,7 @@ extension ParseClient {
         }
     }
     
+    // Method to upload student location
     func postStudentLocation(latitude: Double!, longitude: Double!, mediaURL: String!, mapString: String!, completionHandlerForPostLocation: (success: Bool, errorString: String?) -> Void) {
 //        
         let uniqueKey = UdacityClient.sharedInstance().userID!
@@ -39,7 +41,7 @@ extension ParseClient {
         
         
         taskForPOSTMethod(jsonBody) { (result, error) in
-            if let error = error {
+            if error != nil {
                 completionHandlerForPostLocation(success: false, errorString: "Could not connect!")
             } else {
                 print(result)

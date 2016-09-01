@@ -25,7 +25,7 @@ class UdacityClient: NSObject {
     }
     
     
-    // API client method for
+    // API client method for getting user information
     func udacityTaskForGetUserInfoMethod(completionHandlerForGet: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         func sendError(error:String) {

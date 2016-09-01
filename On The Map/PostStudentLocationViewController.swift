@@ -2,7 +2,7 @@
 //  PostStudentLocationViewController.swift
 //  On The Map
 //
-//  Created by Gabriele on 8/29/16.
+//  Created by Ashley Donohoe on 8/29/16.
 //  Copyright © 2016 Ashley Donohoe. All rights reserved.
 //
 
