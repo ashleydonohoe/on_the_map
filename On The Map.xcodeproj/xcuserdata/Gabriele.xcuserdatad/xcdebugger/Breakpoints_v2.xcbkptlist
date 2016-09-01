@@ -1258,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/UdacityConvenience.swift"
-            timestampString = "494403512.461235"
+            timestampString = "494403605.73912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "createSession(_:password:completionHandlerForSession:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1408,22 +1408,6 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "loginWithUdacity(_:password:hostViewController:completionHandlerForLogin:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "On The Map/UdacityConvenience.swift"
-            timestampString = "494403512.461235"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "createSession(_:password:completionHandlerForSession:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

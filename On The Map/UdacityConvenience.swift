@@ -65,10 +65,8 @@ extension UdacityClient {
                     } else {
                         completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.ConnectionError)
                     }
-                    
-                } else {
-                    completionHandlerForSession(success: false, userKey: nil, errorString: ErrorMessages.LoginError)
                 }
+                
             }
 
         }
